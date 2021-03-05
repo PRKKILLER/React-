@@ -1,3 +1,8 @@
+/* eslint-disable no-irregular-whitespace */
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+/* eslint-disable linebreak-style */
+/* eslint-disable max-len */
 import React, {Component} from 'react';
 import '../../App.css';
 import axios from 'axios';
@@ -46,17 +51,10 @@ class Login extends Component{
         e.preventDefault();
 
 
-        const data = {
-            username : this.state.username,
-            password : this.state.password
-        }
-        if (data.username!="admin"){
-            alert("Incorrect Login Details")
-        }
         //set the with credentials to true
         axios.defaults.withCredentials = true;
         //make a post request with the user data
-        axios.post('http://localhost:3001/login',data)
+        axios.post('http://localhost:3000/login',data)
             .then(response => {
                 console.log("Status Code : ",response);
                 if(response.status === 200){

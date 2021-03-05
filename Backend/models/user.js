@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // import the require dependencies
 
 const express = require('express');
@@ -8,14 +9,8 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
-app.set('view engine', 'ejs');
-
-// use cors to allow cross origin resource sharing
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
-
 const { Sequelize, DataTypes } = require('sequelize');
 
-// Option 2: Passing parameters separately (other dialects)
 const sequelize = new Sequelize('splitwise', 'admin', 'password123', {
   host: 'database-2.c4fklk3lbje2.us-east-2.rds.amazonaws.com',
   port: 3306,
@@ -45,10 +40,12 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false,
     isEmail: true,
+    unique: true,
   },
   Name: {
     type: DataTypes.STRING,
     allowNull: false,
+
     // allowNull defaults to true
   },
   Password: {

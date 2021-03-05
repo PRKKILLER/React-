@@ -23,7 +23,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('splitwise', 'admin', 'password123', {
   host: 'database-2.c4fklk3lbje2.us-east-2.rds.amazonaws.com',
   port: 3306,
-  logging: console.log("Hii"),
+  logging: console.log('Hii'),
   maxConcurrentQueries: 100,
   dialect: 'mysql',
   dialectOptions: {
@@ -70,7 +70,7 @@ const Group = sequelize.define('Group', {
 }, {
   // Other model options go here
 });
-//console.log('hiii', User === sequelize.models.User);
+// console.log('hiii', User === sequelize.models.User);
 
 sequelize.sync();
 module.exports = Group;

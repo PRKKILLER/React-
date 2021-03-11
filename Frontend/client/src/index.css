@@ -6,7 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+h2{
+padding-left:60px;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -49,6 +51,7 @@ code {
 .col{
   height:60px;
   border-right: 0.3px;
+  padding-top:10px;
 }
 .grid{
   border-width: 2px;
@@ -56,5 +59,19 @@ code {
 }
 .row{
   height:60px;
+  
 }
-
+#uowelist{
+height:700px;
+}
+#urowedlist{
+  height:700px;
+}
+.rounded-circle{
+  height:25px;
+  width:25px;
+}
+.name{
+  display: inline-flex;
+  padding:5px;
+}

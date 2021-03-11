@@ -33,12 +33,41 @@ class Footer extends Component {
     return (
       <Container className="justify-content-md-center-lower">
         <Row>
-          <Col>You Owe</Col>
-          <Col>You Are Owed</Col>
+          <Col><h3 style={{ color: '#999' }}>You Owe</h3></Col>
+          <Col><h3 style={{ color: '#999' }}>You Are Owed</h3></Col>
         </Row>
         <div className="row">
-          <div className="col-*-*" />
-          <div className="col-*-*" />
+
+          <div className="col" id="uowelist">
+            <ul>
+              <li className="relationship">
+                <img src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-orange37-100px.png" className="rounded-circle" alt="Avatar" />
+                <div className="name">
+                  <span>  Chinmay  </span>
+                </div>
+                <div className="balance_i_owe"><span>You Owe</span></div>
+                <ul className="balance_details">
+                  <li>load for each grp</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div className="col" id="urowedlist">
+            <ul>
+              <li className="relationship">
+                <img src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-orange37-100px.png" className="rounded-circle" alt="Avatar" />
+                <div className="name">
+                  <span>  Chinmay  </span>
+                </div>
+                <div className="balance_r_owed"><span>You Owe</span></div>
+                <ul className="balance_details">
+                  <li>load for each grp</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
         </div>
       </Container>
     );

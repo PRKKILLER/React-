@@ -11,3 +11,50 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+#expense_button {
+  background: #ff652f;
+  color: #fff;
+  text-shadow: 0 -1px 0 #c83400;
+  float:right;
+  right:10px;
+}
+#settle_button {
+  background: #5bc5a7;
+  color: #fff;
+  text-shadow: 0 -1px 0 #318970;
+  right:10px;
+  float:right;
+}
+.justify-content-md-center{
+  height:200px;
+  padding:30px;
+  width:800px;
+  padding-top: 0px;
+
+}
+.justify-content-md-center-lower{
+  height:800px;
+  border-color:#9ecaed;
+  box-shadow:0 0 10px #9ecaed;
+  width:740px;
+
+}
+.jumbotron{
+  height:200px;
+  padding: 20px;
+  border-color:#9ecaed;
+  box-shadow:0 0 10px #9ecaed;
+
+}
+.col{
+  height:60px;
+  border-right: 0.3px;
+}
+.grid{
+  border-width: 2px;
+  border-right:2px solid #dadada;
+}
+.row{
+  height:60px;
+}
+

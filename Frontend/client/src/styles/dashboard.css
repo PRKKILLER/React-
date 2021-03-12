@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h2{
+  padding-left:60px;
+  }
+
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+#expense_button {
+    background: #ff652f;
+    color: #fff;
+    text-shadow: 0 -1px 0 #c83400;
+    float:right;
+    right:10px;
+  }
+  #settle_button {
+    background: #5bc5a7;
+    color: #fff;
+    text-shadow: 0 -1px 0 #318970;
+    right:10px;
+    float:right;
+  }
+  .justify-content-md-center{
+    height:200px;
+    padding:30px;
+    width:800px;
+    padding-top: 0px;
+  
+  }
+  .justify-content-md-center-lower{
+    height:800px;
+    border-color:#9ecaed;
+    box-shadow:0 0 10px #9ecaed;
+    width:740px;
+  
+  }
+  .jumbotron{
+    height:200px;
+    padding: 20px;
+    border-color:#9ecaed;
+    box-shadow:0 0 10px #9ecaed;
+  
+  }
+  .col{
+    height:60px;
+    border-right: 0.3px;
+    padding-top:10px;
+  }
+  .grid{
+    border-width: 2px;
+    border-right:2px solid #dadada;
+  }
+  .row{
+    height:60px;
+    
+  }
+  #uowelist{
+  height:700px;
+  border-right: 2px solid #dadada;
+  }
+  #urowedlist{
+    height:700px;
+  }
+  .rounded-circle{
+    height:25px;
+    width:25px;
+  }
+  .name{
+    display: inline-flex;
+    padding:5px;
+  }
+  

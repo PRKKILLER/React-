@@ -1,0 +1,96 @@
+.upperNavbar{
+    background-color: #5bc5a7;
+    height:60px;
+    width:100%;
+    max-width: 1600px;
+    overflow: visible;
+    z-index: 1;
+}
+#logo{
+    height: 50px;
+    left: 180px;
+   
+    width: 150px;
+    position: relative;
+    top: 5px;
+}
+
+#dropdown-basic{
+    float: right;
+    position: relative;
+    background-color: #5bc5a7;
+    top: -40px;
+    right: -6px;
+    height: 36px;
+    width: 160px;
+}
+#profilepic{
+
+    float: right;
+    border-radius: 50% !important;
+    right: 160px;
+    position: relative;
+    top:12px;
+    height:35px;
+    width:35px;
+}
+.sidebar{
+height:100%;
+position:absolute;
+left:100px;
+z-index: -1;
+width: 250px;
+overflow: visible;
+top: 60px;
+}
+
+
+#dashboardlink{
+    border-left: 10px solid #5bc5a7;
+    color: #5bc5a7;
+    font-weight: bold;
+    margin: 11px 0 0;
+    padding: 3px 8px 5px 5px;
+    font-size: 16px;
+    line-height: 21px;
+    display: block;
+    height: 40px;
+    font-size: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+}
+#dashboardlink:hover{
+   color: #eeeeee;
+   cursor: pointer;
+   background-color: red;
+opacity: 0.5;
+
+}
+#notificatonlink{
+    border-left: 10px solid #5bc5a7;
+    color: #5bc5a7;
+    font-weight: bold;
+    margin: 11px 0 0;
+    padding: 3px 8px 5px 5px;
+    font-size: 16px;
+    line-height: 21px;
+    display: block;
+    height: 40px;
+    font-size: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+}
+#notificatonlink:hover{
+    color: #eeeeee;
+    cursor: pointer;
+    background-color: red;
+ opacity: 0.5;
+}

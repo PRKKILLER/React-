@@ -1,0 +1,36 @@
+.upperlanding{
+    height:60px;
+    width:100%;
+    max-width: 1600px;
+    overflow: visible;
+    z-index: 1;
+    background-color: #5bc5a7;
+}
+.lowerlanding{
+    background-image: url(https://assets.splitwise.com/assets/core/facets.png);
+    max-width:1600px;
+    position:fixed;
+    top:60px;
+    height:100%;
+}
+#login{
+position:fixed;
+right:100px;
+top:18px;
+color: white;
+
+}
+#signup{
+    position:fixed;
+    right:20px;
+    top:10px;
+    background-color: white;
+    color: #5bc5a7;
+}
+.plane{
+    height: 700px;
+    width: 700px;
+    position: fixed;
+    top: 110px;
+    left: 450px;
+}

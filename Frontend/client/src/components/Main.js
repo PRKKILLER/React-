@@ -16,7 +16,9 @@ import creategroup from './CreateGroup/creategroup';
 import mygroups from './Mygroups/mygroups';
 import grouppage from './Grouppage/grouppage';
 import Recentactivity from './Recent Activity/recentactivity';
-import profilepage from './Profile Page/profilepage.js';
+import profilepage from './Profile Page/profilepage';
+import landing from './Landing/landing';
+
 // Create a Main Component
 class Main extends Component {
   render() {
@@ -32,6 +34,7 @@ class Main extends Component {
         <Route path="/grouppage" component={grouppage} />
         <Route path="/recentactivity" component={Recentactivity} />
         <Route path="/profilepage" component={profilepage} />
+        <Route path="/landing" component={landing} />
       </div>
     );
   }

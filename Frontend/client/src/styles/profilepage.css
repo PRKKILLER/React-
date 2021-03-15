@@ -1,0 +1,29 @@
+#photo_avatar_upload{
+    position: fixed;
+    top: 400px;
+    left: 300px;
+}
+#new_profile{
+    position: fixed;
+    top: 200px;
+    left: 800px;
+}
+.content-block-1{
+    top: 150px;
+    position: absolute;
+    left: 300px;
+    padding-left: 15px;
+    width: 500px;
+}
+.input_1{
+
+}
+.input_2{
+position:fixed;
+top: 180px;
+left: 570px;
+}
+.submit{
+position :relative;
+top:10px;
+}

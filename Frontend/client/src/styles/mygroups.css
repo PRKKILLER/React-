@@ -1,0 +1,23 @@
+.table{
+    border-color: #ccd2d6;
+    box-shadow: 0 0 10px #ccd2d6;
+    width: 710px;
+    position:relative;
+    top:30px;
+}
+tr{
+    cursor:pointer;
+}
+.rrrow{
+    left: 20px;
+    top: 20px;
+    position: relative;
+    padding-top: 30px;
+}
+.col{
+    height:100%;
+}
+.col-sm-12{
+ padding-top: 40px;
+
+}

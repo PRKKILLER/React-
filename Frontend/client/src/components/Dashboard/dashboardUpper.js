@@ -37,7 +37,7 @@ class Header extends Component {
       <Container className="shadow p-3 mb-5 bg-white rounded" className="justify-content-md-center">
         <Jumbotron className="jumbotron">
           <Row>
-            <h2>Dashboard </h2>
+            <h3>Dashboard </h3>
             <Col><Button id="expense_button">Add an Expense</Button></Col>
             <Col><Button id="settle_button">Settle</Button></Col>
           </Row>

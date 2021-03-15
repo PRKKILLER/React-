@@ -10,6 +10,10 @@ import { Route } from 'react-router-dom';
 import Login from './Login/Login';
 import signup from './signup/signup';
 import dashboard from './Dashboard/dashboard';
+import creategroup from './CreateGroup/creategroup';
+import mygroups from './Mygroups/mygroups';
+import grouppage from './Grouppage/grouppage';
+import Recentactivity from './Recent Activity/recentactivity';
 // Create a Main Component
 class Main extends Component {
   render() {
@@ -20,7 +24,10 @@ class Main extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={signup} />
         <Route path="/dashboard" component={dashboard} />
-
+        <Route path="/creategroup" component={creategroup} />
+        <Route path="/mygroups" component={mygroups} />
+        <Route path="/grouppage" component={grouppage} />
+        <Route path="/recentactivity" component={Recentactivity} />
       </div>
     );
   }

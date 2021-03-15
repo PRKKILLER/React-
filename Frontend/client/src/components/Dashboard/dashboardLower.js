@@ -36,12 +36,12 @@ class Footer extends Component {
           <Col><h3 style={{ color: '#999' }}>You Owe</h3></Col>
           <Col><h3 style={{ color: '#999' }}>You Are Owed</h3></Col>
         </Row>
-        <div className="row">
+        <div className="row row_1">
 
           <div className="col" id="uowelist">
             <ul>
               <li className="relationship">
-                <img src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-orange37-100px.png" className="rounded-circle" alt="Avatar" />
+                <img src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-orange37-100px.png" className="rounded-circle profilepic" alt="Avatar" />
                 <div className="name">
                   <span>  Chinmay  </span>
                 </div>
@@ -56,7 +56,7 @@ class Footer extends Component {
           <div className="col" id="urowedlist">
             <ul>
               <li className="relationship">
-                <img src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-orange37-100px.png" className="rounded-circle" alt="Avatar" />
+                <img src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-orange37-100px.png" className="rounded-circle profilepic" alt="Avatar" />
                 <div className="name">
                   <span>  Chinmay  </span>
                 </div>

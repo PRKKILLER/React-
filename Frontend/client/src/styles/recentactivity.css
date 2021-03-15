@@ -1,0 +1,21 @@
+.Title{
+    position: absolute;
+    align-content: center;
+    display: inline-flex;
+    align-self: center;
+    left: 350px;
+    height: 100px;
+    width: 740px;
+}
+.lowerrectangle{
+    height: 800px;
+    border-color: #ccd2d6;
+    box-shadow: 0 0 10px #ccd2d6;
+    width: 740px;
+    top: 100px;
+    position: relative;
+
+}
+.individualactivity{
+    height:50px;
+}

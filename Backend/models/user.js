@@ -1,14 +1,6 @@
 /* eslint-disable no-console */
 // import the require dependencies
 
-const express = require('express');
-
-const app = express();
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
-
 const { Sequelize, DataTypes } = require('sequelize');
 
 const sequelize = new Sequelize('splitwise', 'admin', 'password123', {

@@ -6,11 +6,16 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  h2{
+  h3{
   padding-left:60px;
+  color: #999;
+  font-weight: bold;
+  line-height: 20px;
+  font-size: 35px;
+  padding-top:10px;
   }
 
-  code {
+code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
@@ -37,16 +42,16 @@ body {
   }
   .justify-content-md-center-lower{
     height:800px;
-    border-color:#9ecaed;
-    box-shadow:0 0 10px #9ecaed;
+    border-color: #ccd2d6;
+    box-shadow: 0 0 10px #ccd2d6;
     width:740px;
   
   }
   .jumbotron{
     height:200px;
     padding: 20px;
-    border-color:#9ecaed;
-    box-shadow:0 0 10px #9ecaed;
+    border-color: #ccd2d6;
+    box-shadow: 0 0 10px #ccd2d6;
   
   }
   .col{
@@ -58,7 +63,7 @@ body {
     border-width: 2px;
     border-right:2px solid #dadada;
   }
-  .row{
+  .row_1{
     height:60px;
     
   }
@@ -69,9 +74,11 @@ body {
   #urowedlist{
     height:700px;
   }
-  .rounded-circle{
+  .profilepic{
     height:25px;
     width:25px;
+    top: 0px;
+    position: relative;
   }
   .name{
     display: inline-flex;

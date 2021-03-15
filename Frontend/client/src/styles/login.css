@@ -1,0 +1,24 @@
+.login-form{
+    position:fixed;
+    top: 180px;
+    left: 700px;
+}
+.container{
+    
+}
+.envelope-landing{
+    top: 180px;
+position: fixed;
+left: 450px;
+
+}
+.panel{
+    padding:5px;
+}
+h4{
+    color: #999;
+    font-weight: bold;
+    line-height: 20px;
+    font-size: 30px;
+    padding-top:10px;
+}

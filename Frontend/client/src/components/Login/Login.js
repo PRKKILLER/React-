@@ -11,11 +11,12 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable max-len */
 import React, { Component } from 'react';
+import Container from 'react-bootstrap/Container';
 import '../../App.css';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-
+import '../../styles/login.css';
 import { connect } from 'react-redux';
 import { loginUser } from '../../Redux/actions/action';
 // Define a Login Component
@@ -75,13 +76,23 @@ class Login extends Component {
       }
       return (
         <div>
-          <div className="container">
+
+          <Container className="upperlanding">
+            <div>
+              {' '}
+              <img id="logo" alt="logo" className="rounded-cirlce" src="https://assets.splitwise.com/assets/core/logo-wordmark-horizontal-white-short-c309b91b96261a8a993563bdadcf22a89f00ebb260f4f04fd814c2249a6e05d4.svg" />
+            </div>
+            <a className="dropdown-reveal  px-4 block cursor-pointer font-mont font-semibold" id="login" href="/login">Log in</a>
+            <a className="bg-teal  px-3 py-2 sm:px-5 sm:py-3 rounded shadow sm-cta-button" id="signup" href="/signup">Sign up</a>
+          </Container>
+          <div className="container ">
+            <img className="envelope-landing" src="https://assets.splitwise.com/assets/core/logo-square-65a6124237868b1d2ce2f5db2ab0b7c777e2348b797626816400534116ae22d7.svg" alt="No img" width="200" height="200" />
 
             <div className="login-form">
               <div className="main-div">
                 <div className="panel">
-
-                  <p>Please enter your username and password</p>
+                  <h4>WELCOME TO SPLITWISE </h4>
+                  <hr />
                 </div>
 
                 <div className="form-group">
@@ -90,7 +101,7 @@ class Login extends Component {
                 <div className="form-group">
                   <input onChange={this.passwordChangeHandler} type="password" className="form-control" name="password" placeholder="Password" />
                 </div>
-                <button type="button" style={{ backgroundColor: '#ff652f' }} onClick={this.submitLogin} className="btn btn-primary">Login</button>
+                <Button type="button" style={{ backgroundColor: '#ff652f' }} onClick={this.submitLogin} size="lg" className="btn btn-orange btn-large primary">Login</Button>
               </div>
             </div>
           </div>

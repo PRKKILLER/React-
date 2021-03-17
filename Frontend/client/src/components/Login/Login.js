@@ -72,7 +72,7 @@ class Login extends Component {
     render() {
       // redirect based on successful login
       if (this.props.authUser) {
-        return <Redirect to="/profile" />;
+        return <Redirect to="/dashboard" />;
       }
       return (
         <div>

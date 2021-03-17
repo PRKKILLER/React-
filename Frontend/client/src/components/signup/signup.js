@@ -74,7 +74,7 @@ class signup extends Component {
     render() {
       // redirect based on successful login
       if (this.props.authenticated) {
-        return <Redirect to="/profile" />;
+        return <Redirect to="/dashboard" />;
       }
       return (
         <div>

@@ -7,7 +7,7 @@ const s3 = new AWS.S3({
 });
 
 const getParams = (userID, body, ftype) => ({
-  Bucket: 'splitwise-273',
+  Bucket: 'splitwisebucket',
   Key: `${userID}`,
   Body: body,
   ACL: 'public-read',

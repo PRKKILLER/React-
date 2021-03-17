@@ -46,9 +46,9 @@ class UpperNavbar extends Component {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="#">Your Profile</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Create Grp</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
+              <Dropdown.Item href="/profilepage">Your Profile</Dropdown.Item>
+              <Dropdown.Item href="/creategroup">Create Grp</Dropdown.Item>
+              <Dropdown.Item href="">Logout</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
 

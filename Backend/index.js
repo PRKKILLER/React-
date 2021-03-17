@@ -30,12 +30,12 @@ app.use((req, res, next) => {
 });
 
 app.use('/profile', require('./routes/profileRoute'));
+
 // start your server on port 3000
-app.post('/', (req, res) => {
-  res.json({ message: 'Welcome to chinmay\'s application.' });
-});
 const port = process.env.PORT || 3002;
 app.listen(port, () => console.log(`listening on port ${port}`));
+
+
 // //Route to handle Post Request Call
 // app.post('/login',function(req,res){
 

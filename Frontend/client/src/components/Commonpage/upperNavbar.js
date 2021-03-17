@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/alt-text */
@@ -14,6 +16,8 @@ import Col from 'react-bootstrap/Col';
 import '../../styles/commonpage.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Nav } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { logoutDispatcher } from '../../Redux/actions/action';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class UpperNavbar extends Component {
@@ -48,7 +52,14 @@ class UpperNavbar extends Component {
             <Dropdown.Menu>
               <Dropdown.Item href="/profilepage">Your Profile</Dropdown.Item>
               <Dropdown.Item href="/creategroup">Create Grp</Dropdown.Item>
-              <Dropdown.Item href="">Logout</Dropdown.Item>
+              <Dropdown.Item
+                href=""
+                onClick={() => {
+                  this.props.logoutDispatcher();
+                }}
+              >
+                Logout
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
 
@@ -58,4 +69,12 @@ class UpperNavbar extends Component {
     );
   }
 }
-export default UpperNavbar;
+
+const mapStateToProps = (state) => ({
+  authUser: state.auth.authUser,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  logoutDispatcher: () => dispatch(logoutDispatcher()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(UpperNavbar);

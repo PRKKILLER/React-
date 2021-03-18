@@ -53,7 +53,7 @@ class UpperNavbar extends Component {
               <Dropdown.Item href="/profilepage">Your Profile</Dropdown.Item>
               <Dropdown.Item href="/creategroup">Create Grp</Dropdown.Item>
               <Dropdown.Item
-                href=""
+                href="/landing"
                 onClick={() => {
                   this.props.logoutDispatcher();
                 }}

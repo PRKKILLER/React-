@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
+/* eslint-disable no-undef */
+/* eslint-disable camelcase */
 const { Sequelize, DataTypes } = require('sequelize');
-
 
 // Option 2: Passing parameters separately (other dialects)
 const sequelize = new Sequelize('splitwise', 'admin', 'password123', {
@@ -25,7 +27,7 @@ async function f() {
 }
 f();
 
-const user_Group_Transaction = sequelize.define('User_Group_Transaction', {
+const userGroupTransaction = sequelize.define('UserGroupTransaction', {
   // Model attributes are defined here
 
   UUID: {
@@ -37,10 +39,9 @@ const user_Group_Transaction = sequelize.define('User_Group_Transaction', {
   UserId: {
     type: DataTypes.STRING,
     allowNull: false,
-
   },
   Description: {
-    type: DataTypess.STRING,
+    type: DataTypes.STRING,
 
   },
   Amount: {
@@ -50,10 +51,6 @@ const user_Group_Transaction = sequelize.define('User_Group_Transaction', {
     type: DataTypes.STRING,
     // allowNull defaults to true
   },
-  Date: {
-    type: DataTypes.DATE,
-    // allowNull defaults to true
-  },
 
 }, {
   // Other model options go here
@@ -61,5 +58,5 @@ const user_Group_Transaction = sequelize.define('User_Group_Transaction', {
 
 sequelize.sync();
 
-console.log('hiii', User === sequelize.models.User);
-model.exports = User_Group_Transaction;
+console.log('hiii', userGroupTransaction === sequelize.models.user_Group_Transaction);
+model.exports = UserGroupTransaction;

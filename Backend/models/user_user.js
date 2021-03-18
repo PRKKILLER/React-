@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { Sequelize, DataTypes } = require('sequelize');
 
 // Option 2: Passing parameters separately (other dialects)
@@ -14,17 +15,7 @@ const sequelize = new Sequelize('splitwise', 'admin', 'password123', {
   language: 'en',
 });
 
-async function f() {
-  try {
-    await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-}
-f();
-
-const User = sequelize.define('User_User', {
+const userUser = sequelize.define('User_User', {
   // Model attributes are defined here
   UUID: {
     type: DataTypes.UUID,
@@ -32,7 +23,7 @@ const User = sequelize.define('User_User', {
     primaryKey: true,
 
   },
-  // USER1 PAYES ==>USER2
+  // USER1 owes USER2
   UserId1: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -55,5 +46,5 @@ const User = sequelize.define('User_User', {
 });
 
 sequelize.sync();
-console.log('hiii', User === sequelize.models.User);
-model.exports = User_User_Transaction;
+console.log('UserUser', userUser === sequelize.models.userUser);
+module.exports = userUser;

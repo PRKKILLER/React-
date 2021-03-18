@@ -4,6 +4,7 @@ const express = require('express');
 const { Op } = require('sequelize');
 const multer = require('multer');
 const GroupUser = require('../models/group_user');
+
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 // const findUser = require('../controller/userController');
@@ -73,27 +74,25 @@ router.post('/addProfilePicture', upload.single('file'), async (req, res) => {
   });
 });
 
-
-
 router.post('/addusertorgrp', async (req, res) => {
-    const {
-      GroupId,
-      UserId,
-      GroupName
-    } = req.body;
+  const {
+    GroupId,
+    UserId,
+    GroupName,
+  } = req.body;
     //   create a group
-    try {
-      const creategrpusrres = await GroupUser.create({ GroupId,UserId,GroupName });
-      res.send({
-        status: 200,
-        GrpUsrDetails: creategrpusrres.dataValues,
-      });
-    } catch (err) {
-      res.send({
-        status: 500,
-        data: err,
-      });
-    }
-  });
+  try {
+    const creategrpusrres = await GroupUser.create({ GroupId, UserId, GroupName });
+    res.send({
+      status: 200,
+      GrpUsrDetails: creategrpusrres.dataValues,
+    });
+  } catch (err) {
+    res.send({
+      status: 500,
+      data: err,
+    });
+  }
+});
 
 module.exports = router;

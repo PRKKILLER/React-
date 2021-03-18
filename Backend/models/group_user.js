@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-console */
 const { Sequelize, DataTypes } = require('sequelize');
 
@@ -25,30 +26,36 @@ async function f() {
 }
 f();
 
-const Group = sequelize.define('Group', {
+const GroupUser = sequelize.define('GroupUser', {
   // Model attributes are defined here
-  GroupId: {
-    type: DataTypes.UUID,
+  GroupUserId: {
+    allowNull: false,
     primaryKey: true,
+    type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV1,
   },
-  URL: {
-    type: DataTypes.STRING(200),
-  },
   GroupName: {
-    type: DataTypes.STRING(100),
-    allowNull: false,
-    unique: true,
+    type: DataTypes.STRING,
+    // allowNull defaults to true
   },
-  CreatorEmail: {
-    type: DataTypes.STRING(100),
+  UserId: {
+    type: DataTypes.STRING,
     allowNull: false,
+  },
+  GroupId: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  Flag: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
   },
 
 }, {
   // Other model options go here
 });
-console.log('Group', Group === sequelize.models.Group);
+console.log('GroupUser', GroupUser === sequelize.models.GroupUser);
 
 sequelize.sync({force:true});
-module.exports = Group;
+module.exports = GroupUser;

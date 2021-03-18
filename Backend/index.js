@@ -30,12 +30,10 @@ app.use((req, res, next) => {
 });
 
 app.use('/profile', require('./routes/profileRoute'));
-
+app.use('/group', require('./routes/createGroupRoute'));
 // start your server on port 3000
 const port = process.env.PORT || 3002;
 app.listen(port, () => console.log(`listening on port ${port}`));
-
-
 // //Route to handle Post Request Call
 // app.post('/login',function(req,res){
 

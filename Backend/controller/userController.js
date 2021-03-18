@@ -12,8 +12,7 @@ const EmailId = 'kasle36pratik@gmail.com';
 const findUser = async (EmailId) => {
   const user = await Users.findAll({
     where: {
-      EmailId: 'kasle36pratik@gmail.com',
-
+      EmailId,
     },
   });
   if (user !== undefined && user !== null) {

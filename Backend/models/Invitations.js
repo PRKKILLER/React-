@@ -30,6 +30,7 @@ const Invitation = sequelize.define('Invitation', {
     type: DataTypes.UUID,
     defaultValue: Sequelize.UUIDV4,
     primaryKey: true,
+    autoIncrement: true,
 
   },
   UserId: {
@@ -45,7 +46,7 @@ const Invitation = sequelize.define('Invitation', {
 }, {
   // Other model options go here
 });
-console.log('hiii', User === sequelize.models.User);
+console.log('Invitation', Invitation === sequelize.models.Invitation);
 
 sequelize.sync();
 

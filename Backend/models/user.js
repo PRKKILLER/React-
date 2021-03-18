@@ -68,5 +68,5 @@ const User = sequelize.define('User', {
 });
 
 sequelize.sync();
-console.log('hiii', User === sequelize.models.User);
+console.log('User', User === sequelize.models.User);
 module.exports = User;

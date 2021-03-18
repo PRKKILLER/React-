@@ -34,8 +34,7 @@ app.use((req, res, next) => {
 app.use('/profile', require('./routes/profileRoute'));
 app.use('/group', require('./routes/createGroupRoute'));
 app.use('/mygroup', require('./routes/myGroupRoute'));
-app.use('/getRecentActivity', require('./routes/recentActivityRoute'));
-app.use('/createActivity', require('./routes/recentActivityRoute'));
+app.use('/RecentActivity', require('./routes/recentActivityRoute'));
 // start your server on port 3000
 const port = process.env.PORT || 3002;
 app.listen(port, () => console.log(`listening on port ${port}`));

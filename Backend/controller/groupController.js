@@ -1,6 +1,37 @@
 // const GroupUser = require('../models/group_user');
-// // const Group = require('../models/group');
+const GroupUser = require('../models/group');
 
+// const getgroups = async (UserId) => {
+//   try {
+//     const GroupsObject = await GroupUser.findAll({
+//       where: {
+//         UserId,
+//       },
+//     });
+//     if (GroupsObject !== undefined || GroupsObject !== null) {
+//       return {
+//         statusCode: 200,
+//         body: GroupsObject,
+//       };
+//     }
+//     return {
+//       statusCode: 404,
+//       body: 'No Groups',
+//     };
+//   } catch (err) {
+//     return {
+//       statusCode: 500,
+//       body: err,
+//     };
+//   }
+// };
+
+// const leaveGroupUserObject = await GroupUser.destroy({
+//       where: {
+//         GroupId,
+//         UserId,
+//       },
+//     });
 // const leaveGroupUser = async (GroupId, UserId) => {
 //   try {
 //     const leaveGroupUserObject = await GroupUser.destroy({

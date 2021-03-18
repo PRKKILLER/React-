@@ -15,7 +15,7 @@ const sequelize = new Sequelize('splitwise', 'admin', 'password123', {
   language: 'en',
 });
 
-const userUser = sequelize.define('User_User', {
+const userUser = sequelize.define('userUser', {
   // Model attributes are defined here
   UUID: {
     type: DataTypes.UUID,

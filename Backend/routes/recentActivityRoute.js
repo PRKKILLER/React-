@@ -1,9 +1,12 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-console */
 const express = require('express');
 const recentActivity = require('../models/recentactivity');
 
 const router = express.Router();
 
 router.get('/getRecentActivity/:email', async (req, res) => {
+  EmailId = req.params.email;
   const activitiesRes = await getActivities(req.params.email);
   console.log(activitiesRes);
   if (activitiesRes.statusCode === 200) {
@@ -20,15 +23,16 @@ router.get('/getRecentActivity/:email', async (req, res) => {
 });
 
 router.post('/createActivity', async (req, res) => {
-  const { operationType, groupId, groupName } = req.body;
+  const { operationType, GroupId, groupName } = req.body;
+  console.log('Inside Create activity');
   try {
-    const Object = await recentActivity.create({ operationType, groupId, groupName });
-
+    const Object = await recentActivity.create({ operationType, GroupId, groupName });
     res.send({
       status: 200,
       body: Object,
     });
   } catch (err) {
+    console.log('34 line', err);
     res.send({
       status: 500,
       body: err,

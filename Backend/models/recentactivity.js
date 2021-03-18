@@ -16,7 +16,7 @@ const sequelize = new Sequelize('splitwise', 'admin', 'password123', {
 });
 
 const recentActivity = sequelize.define(
-  'recent_activity_table',
+  'recentActivity',
   {
     activityId: {
       type: DataTypes.UUID,
@@ -37,6 +37,7 @@ const recentActivity = sequelize.define(
     },
   },
 );
-module.exports = {
-  recentActivity,
-};
+
+sequelize.sync();
+console.log('Recent Activity', recentActivity === sequelize.models.recentActivity);
+module.exports = recentActivity;

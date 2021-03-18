@@ -79,9 +79,4 @@ router.post('/acceptinvitation', async (req, res) => {
     });
   }
 });
-// router.post('/checkdeus', async (req, res) => {
-router.get('/getMyGroups/:EmailID', async (req, res) => {
-
-});
-// }
 module.exports = router;

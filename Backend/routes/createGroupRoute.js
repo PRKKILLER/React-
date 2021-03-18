@@ -4,6 +4,7 @@ const express = require('express');
 const { Op } = require('sequelize');
 const multer = require('multer');
 const GroupUser = require('../models/group_user');
+const Users = require('../models/user');
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -92,6 +93,28 @@ router.post('/addusertorgrp', async (req, res) => {
       status: 500,
       data: err,
     });
+  }
+});
+
+router.get('/getAllUsersExceptCurrent:EmailId', async (req, res) => {
+  const { email } = req.params;
+  try {
+    const userObject = await Users.findAll({
+      where: {
+        [Op.not]: { email },
+      },
+    });
+    if (userObject !== undefined && userObject !== null) {
+      return {
+        statusCode: 200,
+        body: userObject,
+      };
+    }
+  } catch (err) {
+    return {
+      statusCode: 500,
+      body: err,
+    };
   }
 });
 

@@ -55,4 +55,8 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+router.post('/updateUserDetails', async (req, res) => {
+  const updateDetails = req.body;
+}
+
 module.exports = router;

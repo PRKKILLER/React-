@@ -31,7 +31,7 @@ const reducer = (state = initialState, action) => {
       };
     }
     case Types.logout: {
-      console.log('inside logout');
+      console.log('Inside logout');
       localStorage.removeItem('EmailId');
       return {
         authenticated: false, // after update user formsubmition reset

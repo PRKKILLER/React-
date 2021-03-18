@@ -36,19 +36,21 @@ class creategroup extends Component {
         { label: 'asa', value: 'jon' },
         { label: 'asa', value: 'jon' },
         { label: 'asa', value: 'jon' },
-        { label: 'asa', value: 'jon' },
-        { label: 'asa', value: 'jon' },
-        { label: 'asa', value: 'jon' },
-        { label: 'asa', value: 'jon' },
-
       ],
+      UserId: localStorage.getItem('EmailId'),
+      // selectedUser:'',
     };
-
-    //     // // Bind the handlers to this class
-    //     // this.usernameChangeHandler = this.usernameChangeHandler.bind(this);
-    //     // this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
-    // this.availUsers = this.availUsers.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  // handleChange(e) {
+  //   this.setState({ value: event.target.value });
+  // }
+
+  // handleSubmit(e) {
+  //   event.preventDefault();
+  // }
 
    editSearchTerm=(e) => {
      this.setState({ searchTerm: e.target.value });
@@ -64,7 +66,7 @@ class creategroup extends Component {
         <img className="envelope" src="https://assets.splitwise.com/assets/core/logo-square-65a6124237868b1d2ce2f5db2ab0b7c777e2348b797626816400534116ae22d7.svg" alt="No img" width="200" height="200" />
 
         <h2>Start a new group</h2>
-        <form id="new_group" className="form" action="/groups" method="post">
+        <form id="new_group" className="form" action="/groups" method="post" onSubmit={this.handleSubmit}>
           <div id="group_avatar_upload">
             <input type="file" id="group_avatar" />
           </div>
@@ -81,7 +83,6 @@ class creategroup extends Component {
               options={this.state.availUsers}
               onChange={(opt) => console.log(opt.label, opt.value)}
             />
-            <input placeholder="Email Address" className="email" type="email" />
           </div>
           <div className=" d-flex flex-row bd-highlight mb-3 fields ">
             <img className="rounded-circle profile-pic" alt="usrprofile" src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-blue23-50px.png" />
@@ -90,7 +91,6 @@ class creategroup extends Component {
               options={this.state.availUsers}
               onChange={(opt) => console.log(opt.label, opt.value)}
             />
-            <input placeholder="Email Address" className="email" type="email" />
           </div>
           <div className=" d-flex flex-row bd-highlight mb-3 fields ">
             <img className="rounded-circle profile-pic" alt="usrprofile" src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-blue23-50px.png" />
@@ -99,9 +99,9 @@ class creategroup extends Component {
               options={this.state.availUsers}
               onChange={(opt) => console.log(opt.label, opt.value)}
             />
-            <input placeholder="Email Address" className="email" type="email" />
+
           </div>
-          <Button type="button" style={{ backgroundColor: '#ff652f' }} className="btn btn-secondary btn-lg">SAVE</Button>
+          <Button type="submit" value="Submit" style={{ backgroundColor: '#ff652f' }} className="btn btn-secondary btn-lg">SAVE</Button>
         </form>
       </div>
     );

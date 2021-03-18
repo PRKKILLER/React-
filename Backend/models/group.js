@@ -50,5 +50,5 @@ const Group = sequelize.define('Group', {
 });
 console.log('Group', Group === sequelize.models.Group);
 
-sequelize.sync({force:true});
+sequelize.sync();
 module.exports = Group;

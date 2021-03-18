@@ -8,7 +8,6 @@ const { Op } = require('sequelize');
 // const router = express.Router();
 const Users = require('../models/User');
 
-const EmailId = 'kasle36pratik@gmail.com';
 const findUser = async (EmailId) => {
   const user = await Users.findAll({
     where: {

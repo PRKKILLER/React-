@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 const express = require('express');
 const { Op } = require('sequelize');
@@ -8,14 +7,10 @@ const Users = require('../models/user');
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
-// const findUser = require('../controller/userController');
 const Group = require('../models/group');
-
 const { getParams, s3 } = require('../services/s3uploader');
 
 const router = express.Router();
-// Route to handle Post Request Call
-
 router.post('/creategroup', async (req, res) => {
   const {
     CreatorEmail,

@@ -11,6 +11,7 @@ const Group = require('../models/group');
 const { getParams, s3 } = require('../services/s3uploader');
 
 const router = express.Router();
+// Write function for initialization
 router.post('/creategroup', async (req, res) => {
   const {
     CreatorEmail,

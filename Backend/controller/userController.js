@@ -9,22 +9,29 @@ const { Op } = require('sequelize');
 const Users = require('../models/User');
 
 const findUser = async (EmailId) => {
-  const user = await Users.findAll({
-    where: {
-      EmailId,
-    },
-  });
-  if (user !== undefined && user !== null) {
-    return {
-      statusCode: 200,
-      body: user,
+  console.log(EmailId);
+  try {
+    const user = await Users.findOne({
+      where: {
+        EmailId,
+      },
+    });
+    if (user !== null && user !== undefined) {
+      return {
+        statusCode: 200,
+        body: user,
 
+      };
+    }
+    return {
+      statusCode: 404,
+      body: 'Not available',
+    };
+  } catch (err) {
+    return {
+      statusCode: 500,
+      body: 'ERR',
     };
   }
-
-  return {
-    statusCode: 500,
-    body: 'ERR',
-  };
 };
-module.exports = findUser;
+module.exports = { findUser };

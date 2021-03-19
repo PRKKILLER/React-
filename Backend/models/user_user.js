@@ -39,7 +39,7 @@ const userUser = sequelize.define('userUser', {
     // allowNull defaults to true
   },
   Owes: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
   },
 }, {
   // Other model options go here

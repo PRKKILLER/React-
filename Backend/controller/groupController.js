@@ -1,30 +1,27 @@
 // const GroupUser = require('../models/group_user');
 // const GroupUser = require('../models/group');
+const Group = require('../models/group');
 
-// const getgroups = async (UserId) => {
-//   try {
-//     const GroupsObject = await GroupUser.findAll({
-//       where: {
-//         UserId,
-//       },
-//     });
-//     if (GroupsObject !== undefined || GroupsObject !== null) {
-//       return {
-//         statusCode: 200,
-//         body: GroupsObject,
-//       };
-//     }
-//     return {
-//       statusCode: 404,
-//       body: 'No Groups',
-//     };
-//   } catch (err) {
-//     return {
-//       statusCode: 500,
-//       body: err,
-//     };
-//   }
-// };
+const getGroup = async (GroupId) => {
+  try {
+    const groupObject = await Group.findByPk(GroupId);
+    if (groupObject !== undefined || groupObject !== null) {
+      return {
+        statusCode: 200,
+        body: groupObject,
+      };
+    }
+    return {
+      statusCode: 404,
+      body: 'Group not found',
+    };
+  } catch (err) {
+    return {
+      statusCode: 500,
+      body: err,
+    };
+  }
+};
 
 // const leaveGroupUserObject = await GroupUser.destroy({
 //       where: {
@@ -61,7 +58,7 @@
 //   }
 // };
 
-// module.exports = {
-//   leaveGroupUser,
+module.exports = {
+  getGroup,
 
-// };
+};

@@ -27,7 +27,7 @@ async function f() {
 }
 f();
 
-const userGroupTransaction = sequelize.define('UserGroupTransaction', {
+const userGroupTransaction = sequelize.define('userGroupTransaction', {
   // Model attributes are defined here
 
   UUID: {
@@ -36,7 +36,7 @@ const userGroupTransaction = sequelize.define('UserGroupTransaction', {
     primaryKey: true,
 
   },
-  UserId: {
+  EmailId: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -58,5 +58,5 @@ const userGroupTransaction = sequelize.define('UserGroupTransaction', {
 
 sequelize.sync();
 
-console.log('hiii', userGroupTransaction === sequelize.models.user_Group_Transaction);
-model.exports = UserGroupTransaction;
+console.log('UsrGroupTransaction', userGroupTransaction === sequelize.models.userGroupTransaction);
+module.exports = userGroupTransaction;

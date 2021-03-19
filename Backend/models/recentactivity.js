@@ -23,7 +23,7 @@ const recentActivity = sequelize.define(
       primaryKey: true,
       defaultValue: DataTypes.UUIDV1,
     },
-    operationType: {
+    OperationType: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -31,7 +31,7 @@ const recentActivity = sequelize.define(
       type: DataTypes.STRING,
       isEMail: true,
     },
-    groupName: {
+    GroupName: {
       type: DataTypes.STRING,
       allowNull: false,
     },

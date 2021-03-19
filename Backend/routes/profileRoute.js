@@ -6,10 +6,13 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable max-len */
 const express = require('express');
-const User = require('../models/user');
+const Users = require('../models/user');
 const { Op } = require('sequelize');
-const findUser = require('../controller/userController');
+const multer = require('multer');
+const { s3, getParams } = require('../services/s3uploader');
 
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 const router = express.Router();
 // Route to handle Post Request Call
 
@@ -21,7 +24,7 @@ router.post('/login', async (req, res) => {
   const Password = await req.body.Password;
   console.log(EmailId, Password);
   try {
-    const user = await User.findOne({ where: { [Op.and]: [{ EmailId }, { Password }] } });
+    const user = await Users.findOne({ where: { [Op.and]: [{ EmailId }, { Password }] } });
     if (user !== undefined) {
       res.status(200).send({ user });
     }
@@ -46,7 +49,7 @@ router.post('/signup', async (req, res) => {
   console.log(EmailId, Password, Name);
   res.send({ EmailId, Password, Name });
   try {
-    const create = await User.create({ Name, EmailId, Password });
+    const create = await Users.create({ Name, EmailId, Password });
     res.status(200).send({
       create,
     });
@@ -56,7 +59,45 @@ router.post('/signup', async (req, res) => {
 });
 
 router.post('/updateUserDetails', async (req, res) => {
-  const updateDetails = req.body;
-}
+  console.log('Inside UpdereUserDetails');
+  const {
+    EmailId, Name, PhoneNumber, Currency,
+  } = req.body;
+  try {
+    const object = await Users.update({ Name, PhoneNumber, Currency }, {
+      where: {
+        EmailId,
+      },
+    });
+    res.status(200).send({
+      data: object,
+    });
+  } catch (err) {
+    res.status(500).send({
+      data: err,
+    });
+  }
+});
 
+router.post('/addProfilePicture', upload.single('file'), async (req, res) => {
+  console.log('Inside Picture router');
+  const { file } = req;
+  const { EmailId } = req.body;
+  console.log('EmailId', EmailId);
+  console.log('file', file);
+  const params = getParams(EmailId, file.buffer, file.mimetype);
+  s3.upload(params, async (err, data) => {
+    console.log(await data.Location);
+    const profilepicupdateRes = await Users.update({ Picture: data.Location }, {
+      where: {
+        EmailId,
+      },
+    });
+    console.log('res', profilepicupdateRes);
+    res.send({
+      status: 200,
+      data: profilepicupdateRes,
+    });
+  });
+});
 module.exports = router;

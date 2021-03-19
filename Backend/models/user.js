@@ -59,7 +59,7 @@ const User = sequelize.define('User', {
     // allowNull defaults to true
   },
   PhoneNumber: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     // allowNull defaults to true
   },
 

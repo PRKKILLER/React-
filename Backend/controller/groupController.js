@@ -1,5 +1,5 @@
 // const GroupUser = require('../models/group_user');
-const GroupUser = require('../models/group');
+// const GroupUser = require('../models/group');
 
 // const getgroups = async (UserId) => {
 //   try {

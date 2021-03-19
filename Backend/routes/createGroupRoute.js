@@ -100,16 +100,16 @@ router.get('/getAllUsersExceptCurrent:EmailId', async (req, res) => {
       },
     });
     if (userObject !== undefined && userObject !== null) {
-      return {
-        statusCode: 200,
+      res.send({
+        status: 200,
         body: userObject,
-      };
+      });
     }
   } catch (err) {
-    return {
-      statusCode: 500,
+    res.send({
+      status: 500,
       body: err,
-    };
+    });
   }
 });
 

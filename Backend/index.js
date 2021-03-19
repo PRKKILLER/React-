@@ -1,9 +1,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable consistent-return */
-/* eslint-disable no-irregular-whitespace */
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-/* eslint-disable linebreak-style */
+/* eslint-disable no-irregular-whitespace *//* eslint-disable no-console */
+/* eslint-disable no-unused-vars *//* eslint-disable linebreak-style */
 /* eslint-disable max-len */
 // import the require dependencies
 
@@ -13,14 +11,9 @@ const morgan = require('morgan');
 
 const app = express();
 const bodyParser = require('body-parser');
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
 
 app.use(bodyParser.json());
 app.use(morgan('dev'));
-
-// Allow Access Control
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', '*');

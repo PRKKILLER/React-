@@ -1,3 +1,11 @@
+/* eslint-disable no-console */
+/* eslint-disable camelcase */
+/* eslint-disable max-len */
+/* eslint-disable no-param-reassign */
+/* eslint-disable vars-on-top */
+/* eslint-disable no-var */
+/* eslint-disable no-plusplus */
+// const e = require('express');
 const userUser = require('../models/user_user');
 // const addUserDeus=async({ GroupId, EmailId, Amount })=>{
 // }
@@ -36,14 +44,48 @@ const addUserDeus = async ({
     });
   }
 };
+const simplify = (table) => {
+  console.log('inside simplify', table);
+  var new_table = table;
+  for (let i = 0; i < table.length; i++) {
+    // console.log('i', i, table[i].dataValues.Owes);
+    // var flag = 0;
+    for (let j = i + 1; j < table.length; j++) {
+      if (table[i].dataValues.UserId1 === table[j].dataValues.UserId2 && table[i].dataValues.UserId2 === table[j].dataValues.UserId1 && table[i].dataValues.GroupId === table[j].dataValues.GroupId) {
+        // flag = 1;
+        console.log('cordinates', i, j);
+        console.log('Useridpaire', table[i].dataValues.UserId1, table[j].dataValues.UserId2);
+        console.log('Useridpaire', table[i].dataValues.UserId2, table[j].dataValues.UserId1);
+        if (table[i].dataValues.owes > table[j].dataValues.owes) {
+          // eslint-disable-next-line operator-assignment
+          console.log();
+          new_table[i].dataValues.Owes = Number(table[i].dataValues.Owes) - Number(table[j].dataValues.Owes);
+          new_table.splice(j, 1);
+        } else {
+          // flag = 1;
+          new_table[j].dataValues.Owes = Number(table[j].dataValues.Owes) - Number(table[i].dataValues.Owes);
+          new_table.splice(i, 1);
+        }
+      }
+    }
+    // if (flag === 0) {
+    //   new_table.push(table[i].dataValues);
+    // }
+  }
+  return (new_table);
+};
 const getUserSummary = async (GroupId) => {
   try {
-    const res = await userUser.findAll({ where: { GroupId } });
-    console.log('line 42', res);
-    if (res !== null && res !== undefined) {
+    const userUserTable = await userUser.findAll({ where: { GroupId } });
+    // console.log('line 48', userUserTable);
+    if (userUserTable !== null && userUserTable !== undefined) {
+      var table = userUserTable;
+      // console.log(table);
+      const simplified_table = simplify(table);
+      console.log('simplified table', simplified_table);
       return ({
         status: 200,
-        body: res,
+        body: simplified_table,
       });
     } return ({
       status: 201,
@@ -56,4 +98,8 @@ const getUserSummary = async (GroupId) => {
     });
   }
 };
+
+// const getSummaryWithUser = async (UserId) => {
+
+// };
 module.exports = { addUserDeus, getUserSummary };

@@ -9,15 +9,13 @@ router.get('/getRecentActivity/:email', async (req, res) => {
   EmailId = req.params.email;
   const activitiesRes = await getactivity(req.params.email);
   console.log(activitiesRes);
-  if (activitiesRes.statusCode === 200) {
+  if (activitiesRes.status === 200) {
     res.status(200).send({
       body: activitiesRes.body,
     });
   } else {
     res.status(500).send({
-      errors: {
-        body: activitiesRes.body,
-      },
+      body: activitiesRes.body,
     });
   }
 });

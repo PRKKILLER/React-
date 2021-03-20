@@ -57,7 +57,35 @@ const getGroupUsersWithoutCurrent = async (GroupId, CurrentUserId) => {
     };
   }
 };
+
+const getGroupfromUserId = async (UserId) => {
+  try {
+    const groupObject = await GroupUser.findAll({
+      attributes: ['GroupId'],
+      where: {
+        UserId,
+        Flag: true,
+      },
+    });
+    if (groupObject !== undefined || groupObject !== null) {
+      return {
+        statusCode: 200,
+        body: groupObject,
+      };
+    }
+    return {
+      statusCode: 404,
+      body: 'No such group exists',
+    };
+  } catch (err) {
+    return {
+      statusCode: 500,
+      body: err,
+    };
+  }
+};
 module.exports = {
   getGroupUsers,
   getGroupUsersWithoutCurrent,
+  getGroupfromUserId,
 };

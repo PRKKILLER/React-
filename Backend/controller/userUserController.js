@@ -99,7 +99,33 @@ const getUserSummary = async (GroupId) => {
   }
 };
 
-// const getSummaryWithUser = async (UserId) => {
+const settleup = async (UserId1, UserId2) => {
+  const response = await userUser.destroy({
+    where: {
+      UserId1,
+      UserId2,
+    },
+  });
+  return (response);
+};
+const getuserowes = async (EmailId) => {
+  const response = await userUser.findAll({
+    where: {
+      UserId1: EmailId,
+    },
+  });
+  console.log(response);
+  return (response);
+};
 
-// };
-module.exports = { addUserDeus, getUserSummary };
+const getUserOwed = async (EmailId) => {
+  const response = await userUser.findAll({
+    where: {
+      UserId2: EmailId,
+    },
+  });
+  return (response);
+};
+module.exports = {
+  getuserowes, getUserOwed, settleup, addUserDeus, getUserSummary,
+};

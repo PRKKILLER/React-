@@ -1,5 +1,5 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable consistent-return */
+/* eslint-disable linebreak-style */
+/* eslint-disable import/no-unresolved *//* eslint-disable consistent-return */
 /* eslint-disable no-irregular-whitespace *//* eslint-disable no-console */
 /* eslint-disable no-unused-vars *//* eslint-disable linebreak-style */
 /* eslint-disable max-len */
@@ -29,6 +29,7 @@ app.use('/group', require('./routes/createGroupRoute'));
 app.use('/mygroup', require('./routes/myGroupRoute'));
 app.use('/RecentActivity', require('./routes/recentActivityRoute'));
 app.use('/individualgroup', require('./routes/individualGroupRoute'));
+app.use('/dashboard', require('./routes/dashboardRoute'));
 
 // start your server on port 3000
 const port = process.env.PORT || 3002;

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-filename-extension */
@@ -27,6 +28,32 @@ class Footer extends Component {
     // this.usernameChangeHandler = this.usernameChangeHandler.bind(this);
     // this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
     // this.submitLogin = this.submitLogin.bind(this);
+    this.state = {
+      data: {
+        owesList: [],
+        owedList: [],
+        owesTotalsList: [],
+        owedTotalsList: [],
+        owes: [],
+        owed: [],
+      },
+      dataEval: false,
+    };
+  }
+
+  async componentDidMount() {
+    const currentUser = localStorage.getItem('EmailId');
+    console.log(currentUser);
+    try {
+      const youower = await axios.post('http://localhost:3002/dashboard/getUserOwes', { EmailId: currentUser });
+      console.log('youower', youower.data);
+      const yourowed = await axios.post('http://localhost:3002/dashboard/getUserOwed', { EmailId: currentUser });
+      console.log('yourowed', yourowed.data);
+      const getUserName = await axios.post('http://localhost:3002/dashboard/getUserName', { EmailId: currentUser });
+      console.log('user name', getUserName.data.response.body);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   render() {
@@ -38,21 +65,34 @@ class Footer extends Component {
         </Row>
         <div className="row row_1">
 
-          <div className="col" id="uowelist">
+          {this.props.data.owesList.map((elem) => (
             <ul>
               <li className="relationship">
                 <img src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-orange37-100px.png" className="rounded-circle profilepic" alt="Avatar" />
                 <div className="name">
-                  <span>  Chinmay  </span>
+                  <span>
+                    {' '}
+                    {elem}
+                    {' '}
+                  </span>
                 </div>
-                <div className="balance_i_owe"><span>You Owe</span></div>
+                <div className="balance_i_owe">
+                  <span>
+                    You Owe
+                    {
+                        ` ${currencyFormatter(currentUser.default_currency,
+                          this.props.data.owesTotalsList[elem])}`
+                        }
+                  </span>
+                </div>
                 <ul className="balance_details">
-                  <li>load for each grp</li>
+                  <li>
+                    {this.props.data.owes[elem]}
+                  </li>
                 </ul>
               </li>
             </ul>
-          </div>
-
+          ))}
           <div className="col" id="urowedlist">
             <ul>
               <li className="relationship">

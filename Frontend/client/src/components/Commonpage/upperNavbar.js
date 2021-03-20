@@ -44,6 +44,17 @@ class UpperNavbar extends Component {
           <img id="logo" className="rounded-cirlce" src="https://assets.splitwise.com/assets/core/logo-wordmark-horizontal-white-short-c309b91b96261a8a993563bdadcf22a89f00ebb260f4f04fd814c2249a6e05d4.svg" />
 
           <img id="profilepic" src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-blue23-50px.png" />
+          <a
+            href="/dashboard"
+            id="dashboardlink"
+          >
+            Dashboard
+
+          </a>
+          <a href="/recentactivity" className="hover-overlay" id="notificatonlink">
+            <i className="icon-flag" />
+            Recent Activity
+          </a>
           <Dropdown>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
               User Name

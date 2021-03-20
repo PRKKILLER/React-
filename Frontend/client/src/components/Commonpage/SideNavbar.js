@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-useless-constructor */
 /* eslint-disable react/jsx-filename-extension */
@@ -32,16 +33,7 @@ class SideNavbar extends Component {
 
   render() {
     return (
-      <div className="sidebar">
-        <div id="dashboardlink" className=" hover-overlay ">
-          Dashboard
-
-        </div>
-        <a href="/activity" className="hover-overlay" id="notificatonlink">
-          <i className="icon-flag" />
-          Recent Activity
-        </a>
-      </div>
+      <div className="sidebar" />
 
     );
   }

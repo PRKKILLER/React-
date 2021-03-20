@@ -1,3 +1,5 @@
+/* eslint-disable react/sort-comp */
+/* eslint-disable consistent-return */
 /* eslint-disable react/prefer-stateless-function */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
@@ -19,6 +21,13 @@ import '../../styles/dashboard.css';
 import SideNavbar from '../Commonpage/SideNavbar';
 
 class dashboard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+    };
+  }
+
   render() {
     return (
       <div>

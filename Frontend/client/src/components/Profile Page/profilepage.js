@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
 /* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable import/order */
@@ -33,6 +35,7 @@ class profilepage extends Component {
       const res = await axios.post('http://localhost:3002/profile/updateUserDetails', {
         EmailId, Name, PhoneNumber, Currency,
       });
+      console.log(res.data);
       alert('Profile updated successfully!');
     } catch (err) {
       console.log(err);
@@ -46,7 +49,7 @@ class profilepage extends Component {
         <SideNavbar />
         <UpperNavbar />
         <div className="content-block-1">
-          <img className="profile_picture" src="" alt="No img" width="200" height="200" />
+          <img className="profile_picture" src="https://assets.splitwise.com/assets/core/logo-square-65a6124237868b1d2ce2f5db2ab0b7c777e2348b797626816400534116ae22d7.svg" alt="No img" width="200" height="200" />
           <form id="new_profile" className="form" method="post" onSubmit={this.handleSubmit}>
             <div id="photo_avatar_upload">
               <input name="photo_URL" type="file" id="profile_picture" onChange={this.onFileChange} />
@@ -82,11 +85,11 @@ class profilepage extends Component {
             <div className="input_2">
               <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>User Name</Form.Label>
-                <Form.Control name="name" placeholder="John Doe" />
+                <Form.Control name="name" placeholder="Michael Jackson" />
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control name="email" type="email" placeholder="JohnDoe@gmail.com" />
+                <Form.Control name="email" type="email" placeholder="michael@gmail.com" />
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Phone Number</Form.Label>

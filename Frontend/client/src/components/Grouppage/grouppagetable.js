@@ -9,7 +9,7 @@ class TablePage extends Component {
   render() {
     console.log(this.props.data);
     return (
-      <table className="table">
+      <table className="table" id="grouppagetable">
         <thead className="thead-dark">
           <tr>
             <th>Expense description</th>

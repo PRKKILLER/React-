@@ -51,6 +51,13 @@ class UpperNavbar extends Component {
             Dashboard
 
           </a>
+          <a
+            href="/mygroups"
+            id="mygroups"
+          >
+            Mygroup
+
+          </a>
           <a href="/recentactivity" className="hover-overlay" id="notificatonlink">
             <i className="icon-flag" />
             Recent Activity

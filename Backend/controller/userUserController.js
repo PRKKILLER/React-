@@ -109,12 +109,13 @@ const settleup = async (UserId1, UserId2) => {
   return (response);
 };
 const getuserowes = async (EmailId) => {
+  console.log('inside get user owes controller');
   const response = await userUser.findAll({
     where: {
       UserId1: EmailId,
     },
   });
-  console.log(response);
+  console.log(`responsw->>>>>>${response}`);
   return (response);
 };
 

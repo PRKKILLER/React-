@@ -61,7 +61,7 @@ top: 60px;
     cursor: pointer;
     width: 200px;
     position: absolute;
-    left: 600px;
+    left: 550px;
     top: 2px;
     border-width: 1px;
     border-radius: 0.5px;
@@ -73,6 +73,36 @@ top: 60px;
 opacity: 0.5;
 border-color: #076d1f;
 
+}
+#mygroups{
+    color: #fff;
+    font-weight: bold;
+    margin: 11px 0 0;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 21px;
+    display: block;
+    height: 40px;
+    font-size: 20px;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+    width: 200px;
+    position: absolute;
+    left: 680px;
+    top: 2px;
+    border-width: 1px;
+    border-radius: 0.5px;
+    border-color: #050505;
+    text-rendering: optimizeLegibility;
+font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+#mygroups:hover{
+color: #eeeeee;
+   cursor: pointer;
+opacity: 0.5;
+border-color: #076d1f;
 }
 #notificatonlink{
     color: #fff;

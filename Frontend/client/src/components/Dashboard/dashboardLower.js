@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-no-duplicate-props */
@@ -42,73 +44,60 @@ class Footer extends Component {
     };
   }
 
-  async componentDidMount() {
-    const currentUser = localStorage.getItem('EmailId');
-    console.log(currentUser);
-    try {
-      const youower = await axios.post('http://localhost:3002/dashboard/getUserOwes', { EmailId: currentUser });
-      console.log('youower', youower.data);
-      const yourowed = await axios.post('http://localhost:3002/dashboard/getUserOwed', { EmailId: currentUser });
-      console.log('yourowed', yourowed.data);
-      const getUserName = await axios.post('http://localhost:3002/dashboard/getUserName', { EmailId: currentUser });
-      console.log('user name', getUserName.data.response.body);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   render() {
+    console.log(this.props.owes);
+    console.log(this.props.owed);
     return (
       <Container className="justify-content-md-center-lower">
         <Row>
           <Col><h3 style={{ color: '#999' }}>You Owe</h3></Col>
           <Col><h3 style={{ color: '#999' }}>You Are Owed</h3></Col>
         </Row>
-        <div className="row row_1">
-          {/*
-          {this.props.data.owesList.map((elem) => ( */}
-          <ul>
-            <li className="relationship">
-              <img src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-orange37-100px.png" className="rounded-circle profilepic" alt="Avatar" />
-              <div className="name">
-                <span>
-                  {/* {' '}
-                  {elem}
-                  {' '} */}
-                </span>
-              </div>
-              <div className="balance_i_owe">
-                <span>
-                  You Owe
-                  {/* {
-                        ` ${currencyFormatter(currentUser.default_currency,
-                          this.props.data.owesTotalsList[elem])}`
-                        } */}
-                </span>
-              </div>
-              <ul className="balance_details">
-                <li>
-                  {/* {this.props.data.owes[elem]} */}
-                </li>
-              </ul>
-            </li>
-          </ul>
-          {/* ))} */}
-          <div className="col" id="urowedlist">
+        <div className="Row">
+          <div className="col" id="uowelist">
             <ul>
-              <li className="relationship">
-                <img src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-orange37-100px.png" className="rounded-circle profilepic" alt="Avatar" />
-                <div className="name">
-                  <span>  Chinmay  </span>
-                </div>
-                <div className="balance_r_owed"><span>You Owe</span></div>
-                <ul className="balance_details">
-                  <li>load for each grp</li>
-                </ul>
-              </li>
+              {this.props.owes.map((user) => (
+                <li className="relationship">
+                  <img src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-orange37-100px.png" className="rounded-circle profilepic" alt="Avatar" />
+                  <span>
+                    {' '}
+                    { user.UserId2 }
+                    {' '}
+                    is owed
+                    {' '}
+                    { user.Owes }
+                    {' '}
+                    from group
+                    {' '}
+                    {user.GroupName}
+                    {' '}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
-
+          <div className="col" id="urowedlist">
+            <ul>
+              {this.props.owed.map((user) => (
+                <li className="relationship">
+                  <img src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-orange37-100px.png" className="rounded-circle profilepic" alt="Avatar" />
+                  <span>
+                    {' '}
+                    { user.UserId1 }
+                    {' '}
+                    owes you
+                    {' '}
+                    { user.Owes }
+                    {' '}
+                    from group
+                    {' '}
+                    {user.GroupName}
+                    {' '}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </Container>
     );

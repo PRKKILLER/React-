@@ -1,9 +1,19 @@
 .table{
-    border-color: #ccd2d6;
     box-shadow: 0 0 10px #ccd2d6;
-    width: 710px;
-    position:relative;
-    top:30px;
+    border-color: #454d55;
+    width:700px;
+}
+.btn-outline-secondary{
+    width:150px; 
+}
+.btn-outline-secondary:hover{
+    background: #ff652f;
+color: #fff;
+text-shadow: 0 -1px 0 #c83400;
+
+}
+.css-2b097c-container{
+    width:150px;
 }
 tr{
     cursor:pointer;

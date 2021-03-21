@@ -58,7 +58,7 @@ class Recentactivity extends Component {
   componentDidMount = async () => {
     const retrievedObject = localStorage.getItem('EmailId');
     const resForGroupNames = await axios.get(`http://localhost:3002/RecentActivity/getRecentActivity/${retrievedObject}`);
-    // console.log(resForGroupNames.data.body);
+    console.log(resForGroupNames.data.body);
     const tableData = getDataForRecentActivity(resForGroupNames.data.body);
     this.setState({ activities: tableData });
   }

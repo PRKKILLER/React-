@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
@@ -12,6 +13,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage });
 const Group = require('../models/group');
 const { getParams, s3 } = require('../services/s3uploader');
+// const { bulkCreate } = require('../models/group_user');
 
 const router = express.Router();
 // Write function for initialization
@@ -23,15 +25,11 @@ router.post('/creategroup', async (req, res) => {
   //   create a group
   try {
     const creategrpres = await Group.create({ CreatorEmail, GroupName });
-    res.send({
-    //   createresponse,
-      status: 200,
+    res.status(200).send({
       Groupdetails: creategrpres.dataValues,
     });
   } catch (err) {
-    res.send({
-    //   createresponse,
-      status: 500,
+    res.status(500).send({
       data: err,
     });
   }
@@ -81,15 +79,17 @@ router.post('/addusertorgrp', async (req, res) => {
     GroupName,
   } = req.body;
     //   create a group
+  console.log('use ids', UserIds);
   const creategrpusrres = [];
   try {
     for (let i = 0; i < UserIds.length; i += 1) {
-      console.log(UserIds[i]);
-      const UserId = UserIds[i];
-      console.log(UserId);
-      creategrpusrres.push(await GroupUser.create({ GroupId, UserId, GroupName }));
+      console.log(UserIds[i].EmailId);
+      const UserId = UserIds[i].EmailId;
+      console.log('user id inside loop', UserId);
+      creategrpusrres.push({ GroupId, UserId, GroupName });
     }
-    res.status(200).send({ data: creategrpusrres });
+    const bulkRes = await GroupUser.bulkCreate(creategrpusrres);
+    res.status(200).send('Users added to GroupUser');
   } catch (err) {
     console.log(err);
     res.status(500).send({
@@ -98,13 +98,13 @@ router.post('/addusertorgrp', async (req, res) => {
   }
 });
 
-router.get('/getAllUsersExceptCurrent/:email', async (req, res) => {
-  const { email } = req.params;
-  console.log(email);
+router.get('/getAllUsersExceptCurrent/:EmailId', async (req, res) => {
+  const { EmailId } = req.params;
+  console.log(EmailId);
   try {
     const userObject = await Users.findAll({
       where: {
-        [Op.not]: { email },
+        [Op.not]: { EmailId },
       },
     });
     console.log(userObject);

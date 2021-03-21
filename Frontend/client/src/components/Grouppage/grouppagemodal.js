@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
@@ -55,7 +56,6 @@ class ExpenseModal extends Component {
           <Container className="shadow p-3 mb-5 bg-white rounded" className="justify-content-md-center-group">
             <Jumbotron className="jumbotron-group">
               <Row className="rrow">
-                <h3>Group Name </h3>
                 <Col><Button id="expense_button" onClick={this.handleShow}>Add an Expense</Button></Col>
               </Row>
             </Jumbotron>

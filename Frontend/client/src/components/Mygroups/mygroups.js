@@ -14,7 +14,6 @@ import { Redirect } from 'react-router';
 // import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 import Select from 'react-select';
-import SideNavbar from '../Commonpage/SideNavbar';
 import UpperNavbar from '../Commonpage/upperNavbar';
 import '../../styles/mygroups.css';
 import TablePage from './mygroupstable';
@@ -73,8 +72,7 @@ class mygroups extends Component {
     return (
       <div>
         <UpperNavbar />
-        <SideNavbar />
-        <button type="button" className="btn btn-primary" onClick={this.handleClick}>Go to group</button>
+        <div className="GotoGroup"><button type="button" className="btn btn-outline-secondary" onClick={this.handleClick}>Go to group</button></div>
         <Select
           className="sort"
           options={this.state.options}

@@ -4,6 +4,11 @@
     border-color: #ccd2d6;
     box-shadow: 0 0 10px #ccd2d6;
 }
+#grouppagetable{
+    position: absolute;
+    top: 210px;
+    left: 370px;
+}
 .rrow{
     left: 8px;
     top: 20px;

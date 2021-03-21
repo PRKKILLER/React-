@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/sort-comp */
 /* eslint-disable consistent-return */
 /* eslint-disable react/prefer-stateless-function */
@@ -14,6 +15,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 // import '../../index.css';
 import Jumbotron from 'react-bootstrap/Jumbotron';
+import _ from 'lodash';
 import Header from './dashboardUpper';
 import Footer from './dashboardLower';
 import UpperNavbar from '../Commonpage/upperNavbar';
@@ -25,7 +27,30 @@ class dashboard extends Component {
     super(props);
 
     this.state = {
+      UserOwesRes: [],
+      UserOwedRes: [],
+      settleUpList: [],
     };
+  }
+
+  componentDidMount = async () => {
+    const EmailId = localStorage.getItem('EmailId');
+    let UserOwesRes = await axios.post('http://localhost:3002/dashboard/getUserOwes', { EmailId });
+    let UserOwedRes = await axios.post('http://localhost:3002/dashboard/getUserOwed', { EmailId });
+    console.log('UserOwesRes', UserOwesRes.data.response);
+    console.log('UserOwedRes', UserOwedRes.data.response);
+    UserOwesRes = UserOwesRes.data.response;
+    UserOwedRes = UserOwedRes.data.response;
+    this.setState({ UserOwedRes });
+    this.setState({ UserOwesRes });
+    // const SettleupRes = await axios.post('http://localhost:3002/dashboard/settleup', {UserId1, UserId2,});
+    const owedList = UserOwedRes.map((user) => user.UserId1);
+    // const owesList = UserOwesRes.map((user) => user.UserId1);
+    const settleUpList = owedList.map((user) => ({
+      label: user,
+      value: user,
+    }));
+    this.setState({ settleUpList });
   }
 
   render() {
@@ -33,8 +58,8 @@ class dashboard extends Component {
       <div>
         <UpperNavbar />
         <SideNavbar />
-        <Header />
-        <Footer />
+        <Header settleList={this.state.settleUpList} />
+        <Footer owed={this.state.UserOwedRes} owes={this.state.UserOwesRes} />
       </div>
     );
   }

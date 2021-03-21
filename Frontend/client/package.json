@@ -9,6 +9,7 @@
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "bootstrap": "^4.6.0",
+    "lodash": "^4.17.21",
     "mdbootstrap": "^4.19.2",
     "mdbreact": "^5.0.1",
     "react": "^17.0.1",

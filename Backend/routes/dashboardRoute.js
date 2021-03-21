@@ -22,6 +22,7 @@ router.post('/getUserOwes', async (req, res) => {
     const {
       EmailId,
     } = req.body;
+    console.log(`25${EmailId}`);
     const response = await getuserowes(EmailId);
     res.status(200).send({ response });
   } catch (err) {

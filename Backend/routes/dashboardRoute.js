@@ -4,6 +4,7 @@ const router = express.Router();
 const {
   getuserowes, getUserOwed, settleup,
 } = require('../controller/userUserController');
+const { findUser } = require('../controller/userController');
 
 router.post('/settleup', async (req, res) => {
   try {
@@ -38,4 +39,17 @@ router.post('/getUserOwed', async (req, res) => {
     res.status(500).send({ error: err });
   }
 });
+
+router.post('/getUserName', async (req, res) => {
+  try {
+    const {
+      EmailId,
+    } = req.body;
+    const response = await findUser(EmailId);
+    res.status(200).send({ response });
+  } catch (err) {
+    res.status(500).send({ error: err });
+  }
+});
+
 module.exports = router;

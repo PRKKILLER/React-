@@ -10,7 +10,7 @@ const userUser = require('../models/user_user');
 const leaveGroupUser = require('../controller/groupController');
 
 router.get('/myGroupList/:EmailID', async (req, res) => {
-  const EmailId = req.params.userID;
+  const EmailId = req.params.EmailID;
   console.log('Insode');
   console.log(EmailId);
   try {
@@ -35,6 +35,7 @@ router.get('/myGroupList/:EmailID', async (req, res) => {
       });
     }
   } catch (err1) {
+    console.log(err1);
     res.send({
       status: 404,
       data: err1,
@@ -42,10 +43,11 @@ router.get('/myGroupList/:EmailID', async (req, res) => {
   }
 });
 
-router.delete('/leaveGroup', async (req, res) => {
-  const { GroupId } = req.body;
-  const { UserId } = req.body;
-  const getDuesRes = await getDuesForGroup({ GroupId, UserId });
+router.post('/leaveGroup', async (req, res) => {
+  const { GroupId, UserId } = req.body;
+  console.log('User id ', UserId);
+  const getDuesRes = await getDuesForGroup(GroupId, UserId);
+  console.log('dues:', getDuesRes);
   const { statusCode, body } = getDuesRes;
   if (statusCode === 200 && body.length === 0) {
     const leaveObject = await leaveGroupUser(GroupId, UserId);
@@ -55,16 +57,18 @@ router.delete('/leaveGroup', async (req, res) => {
       res.status(500).send(leaveObject.body);
     }
   } else {
-    res.send(body);
+    res.send('Please clear dues');
   }
 });
 
 router.post('/acceptinvitation', async (req, res) => {
-  const { GroupUserId } = req.body;
+  const { GroupId } = req.body;
+  const { UserId } = req.body;
   try {
     const response = await GroupUser.update({ Flag: 'true' }, {
       where: {
-        GroupUserId,
+        GroupId,
+        UserId,
       },
     });
     res.send({

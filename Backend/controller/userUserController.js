@@ -11,7 +11,7 @@ const userUser = require('../models/user_user');
 // }
 // Initialized dues function
 const addUserDeus = async ({
-  UserId1, UserId2, GroupId, Owes,
+  UserId1, UserId2, GroupId, Owes, GroupName,
 }) => {
 //   console.log(Owes);
   try {
@@ -31,7 +31,7 @@ const addUserDeus = async ({
     }
     // console.log('line 26');
     const responsecreate = await userUser.create({
-      UserId1, UserId2, GroupId, Owes,
+      UserId1, UserId2, GroupId, Owes, GroupName,
     });
     return ({
       status: 201,

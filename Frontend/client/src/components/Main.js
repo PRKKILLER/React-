@@ -1,4 +1,4 @@
-/* eslint-disable linebreak-style */
+/* eslint-disable react/jsx-props-no-spreading *//* eslint-disable linebreak-style */
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable linebreak-style */
@@ -14,7 +14,7 @@ import signup from './signup/signup';
 import dashboard from './Dashboard/dashboard';
 import creategroup from './CreateGroup/creategroup';
 import mygroups from './Mygroups/mygroups';
-import grouppage from './Grouppage/grouppage';
+import GroupPage from './Grouppage/grouppage';
 import Recentactivity from './Recent Activity/recentactivity';
 import profilepage from './Profile Page/profilepage';
 import landing from './Landing/landing';
@@ -31,7 +31,7 @@ class Main extends Component {
         <Route path="/dashboard" component={dashboard} />
         <Route path="/creategroup" component={creategroup} />
         <Route path="/mygroups" component={mygroups} />
-        <Route path="/grouppage" component={grouppage} />
+        <Route path="/group/" render={(props) => <GroupPage {...props} />} />
         <Route path="/recentactivity" component={Recentactivity} />
         <Route path="/profilepage" component={profilepage} />
         <Route path="/landing" component={landing} />

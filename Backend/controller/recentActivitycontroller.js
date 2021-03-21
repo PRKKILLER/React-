@@ -32,7 +32,6 @@ const getactivity = async (UserId) => {
     const groupIds = await getGroupfromUserId(UserId);
     const grouplist = getlist(groupIds.body);
     const activities = await recentActivity.findAll({
-      attributes: ['OperationType'],
       where:
       {
         GroupId:

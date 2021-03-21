@@ -34,4 +34,5 @@ const findUser = async (EmailId) => {
     };
   }
 };
+
 module.exports = { findUser };

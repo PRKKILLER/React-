@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-boolean-value */
 /* eslint-disable no-unused-vars */
@@ -12,26 +13,20 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import '../../styles/mygroups.css';
 import Button from 'react-bootstrap/Button';
-import getDataForMyGroups from '../../utils/myGroupsUtils';
 
-const TablePage = ({ data }) => {
-  const tableData = getDataForMyGroups(data);
-
-  console.log('props', data);
-  return (
-    <Container className="justify-content-md-center-lower">
-      <Row className="rrrow">
-        <MDBDataTable
-          striped
-          bordered
-          small={true}
-          searching
-          data={tableData}
-          hover
-        />
-      </Row>
-    </Container>
-  );
-};
+const TablePage = ({ data }) => (
+  <Container className="justify-content-md-center-lower">
+    <Row className="rrrow">
+      <MDBDataTable
+        striped
+        bordered
+        small={true}
+        searching
+        data={data}
+        hover
+      />
+    </Row>
+  </Container>
+);
 
 export default TablePage;

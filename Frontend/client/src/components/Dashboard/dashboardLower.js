@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-state */
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable no-unused-vars */
@@ -64,35 +65,35 @@ class Footer extends Component {
           <Col><h3 style={{ color: '#999' }}>You Are Owed</h3></Col>
         </Row>
         <div className="row row_1">
-
-          {this.props.data.owesList.map((elem) => (
-            <ul>
-              <li className="relationship">
-                <img src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-orange37-100px.png" className="rounded-circle profilepic" alt="Avatar" />
-                <div className="name">
-                  <span>
-                    {' '}
-                    {elem}
-                    {' '}
-                  </span>
-                </div>
-                <div className="balance_i_owe">
-                  <span>
-                    You Owe
-                    {
+          {/*
+          {this.props.data.owesList.map((elem) => ( */}
+          <ul>
+            <li className="relationship">
+              <img src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-orange37-100px.png" className="rounded-circle profilepic" alt="Avatar" />
+              <div className="name">
+                <span>
+                  {/* {' '}
+                  {elem}
+                  {' '} */}
+                </span>
+              </div>
+              <div className="balance_i_owe">
+                <span>
+                  You Owe
+                  {/* {
                         ` ${currencyFormatter(currentUser.default_currency,
                           this.props.data.owesTotalsList[elem])}`
-                        }
-                  </span>
-                </div>
-                <ul className="balance_details">
-                  <li>
-                    {this.props.data.owes[elem]}
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          ))}
+                        } */}
+                </span>
+              </div>
+              <ul className="balance_details">
+                <li>
+                  {/* {this.props.data.owes[elem]} */}
+                </li>
+              </ul>
+            </li>
+          </ul>
+          {/* ))} */}
           <div className="col" id="urowedlist">
             <ul>
               <li className="relationship">

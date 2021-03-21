@@ -15,7 +15,9 @@ const { addtransaction, gettransactions } = require('../controller/User_Grp_Tran
 //   const { statusCode, body } = expenseListRes;
 //   res.status(statusCode).send(body);
 // });
-const addUserDeusPool = async ({ Group, EmailId, Amount }) => {
+const addUserDeusPool = async ({
+  Group, EmailId, Amount, GroupName,
+}) => {
   const { GroupId } = Group.body.dataValues;
   const Userlist = await getGroupUsersWithoutCurrent(GroupId, EmailId);
   const UserId2 = EmailId;
@@ -29,7 +31,7 @@ const addUserDeusPool = async ({ Group, EmailId, Amount }) => {
     // console.log('UserId2', UserId2);
     try {
       addUserDeusRes.push(addUserDeus({
-        UserId1, UserId2, GroupId, Owes,
+        UserId1, UserId2, GroupId, Owes, GroupName,
       }));
     } catch (err) {
       console.log(err);
@@ -58,7 +60,9 @@ router.post('/addExpense', async (req, res) => {
 
     const addActivityResponse = await addActivity({ OperationType, GroupId, GroupName });
     // making Changes user-user desus group
-    const addUserDeusRes = await addUserDeusPool({ Group, EmailId, Amount });
+    const addUserDeusRes = await addUserDeusPool({
+      Group, EmailId, Amount, GroupName,
+    });
     if (addUserDeusRes.status == 500) {
       res.send({ status: 500, body: addUserDeusRes.body });
     } else if (addActivityResponse == 500) {

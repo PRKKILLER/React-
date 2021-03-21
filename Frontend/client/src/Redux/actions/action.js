@@ -51,12 +51,8 @@ const createUser = (payload) => (dispatch) => {
       }
     })
     .catch((err) => {
-      if (err.response.data) {
-        console.log(err.response.data);
-        dispatch(unauthDispatcher(err.response.data));
-      } else {
-        dispatch(unauthDispatcher('Server error'));
-      }
+      console.log(err);
+      dispatch(unauthDispatcher('Server error'));
     });
 };
 

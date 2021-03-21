@@ -1,3 +1,6 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-console */
 const express = require('express');
 const { Op } = require('sequelize');
@@ -74,32 +77,37 @@ router.post('/addProfilePicture', upload.single('file'), async (req, res) => {
 router.post('/addusertorgrp', async (req, res) => {
   const {
     GroupId,
-    UserId,
+    UserIds,
     GroupName,
   } = req.body;
     //   create a group
+  const creategrpusrres = [];
   try {
-    const creategrpusrres = await GroupUser.create({ GroupId, UserId, GroupName });
-    res.send({
-      status: 200,
-      GrpUsrDetails: creategrpusrres.dataValues,
-    });
+    for (let i = 0; i < UserIds.length; i += 1) {
+      console.log(UserIds[i]);
+      const UserId = UserIds[i];
+      console.log(UserId);
+      creategrpusrres.push(await GroupUser.create({ GroupId, UserId, GroupName }));
+    }
+    res.status(200).send({ data: creategrpusrres });
   } catch (err) {
-    res.send({
-      status: 500,
+    console.log(err);
+    res.status(500).send({
       data: err,
     });
   }
 });
 
-router.get('/getAllUsersExceptCurrent:EmailId', async (req, res) => {
+router.get('/getAllUsersExceptCurrent/:email', async (req, res) => {
   const { email } = req.params;
+  console.log(email);
   try {
     const userObject = await Users.findAll({
       where: {
         [Op.not]: { email },
       },
     });
+    console.log(userObject);
     if (userObject !== undefined && userObject !== null) {
       res.send({
         status: 200,

@@ -55,7 +55,7 @@ class Header extends Component {
   }
 
  getCurrentUserData = () => {
-   const retrievedObject = localStorage.getItem('user');
+   const retrievedObject = localStorage.getItem('EmailId');
    if (retrievedObject === null) {
      return false;
    }

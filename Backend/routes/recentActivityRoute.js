@@ -6,8 +6,8 @@ const { getactivity } = require('../controller/recentActivitycontroller');
 const router = express.Router();
 
 router.get('/getRecentActivity/:email', async (req, res) => {
-  EmailId = req.params.email;
-  const activitiesRes = await getactivity(req.params.email);
+  const EmailId = req.params.email;
+  const activitiesRes = await getactivity(EmailId);
   console.log(activitiesRes);
   if (activitiesRes.status === 200) {
     res.status(200).send({

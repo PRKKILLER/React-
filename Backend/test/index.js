@@ -41,11 +41,11 @@ describe('Test register', () => {
   it('It should create user data', (done) => {
     chai.request(server)
       .post('/user/register')
-      .send({ email: 'chinmay1@gmail.com', password: 'chinmay123', name: 'Chinmay' })
+      .send({ email: 'usr1@gmail.com', password: '123', name: 'usr1' })
       .end((err, response) => {
         response.should.have.status(201);
         response.body.should.be.a('object');
-        response.body.should.have.property('user').property('email').eq('chinmay1@gmail.com');
+        response.body.should.have.property('user').property('email').eq('usr1@gmail.co');
         done();
       });
   });

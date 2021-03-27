@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
@@ -25,9 +26,11 @@ class GroupPage extends Component {
   }
 
   componentDidMount = async () => {
-    const groupId = this.props.location.state.group.GroupId;
+    console.log('group id', this.props.location.state.group);
+    const groupId = this.props.location.state.group;
+    console.log('group id', groupId);
     const resForExpenseList = await axios.get(`http://localhost:3002/individualgroup/showexpanse/${groupId}`);
-    console.log(resForExpenseList.data);
+    console.log('Expanse', resForExpenseList.data);
     this.setState({ expenses: resForExpenseList.data.data });
   }
 

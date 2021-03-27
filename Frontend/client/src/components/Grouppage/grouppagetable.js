@@ -7,7 +7,7 @@ import '../../styles/mygroups.css';
 
 class TablePage extends Component {
   render() {
-    console.log(this.props.data);
+    console.log('this props data', this.props.data);
     return (
       <table className="table" id="grouppagetable">
         <thead className="thead-dark">

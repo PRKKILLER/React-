@@ -42,6 +42,7 @@ class creategroup extends Component {
       selected: [],
       UserId: localStorage.getItem('EmailId'),
       // selectedUser:'',
+      memberSelect: [],
     };
   }
 
@@ -52,6 +53,20 @@ class creategroup extends Component {
   // handleSubmit(e) {
   //   event.preventDefault();
   // }
+
+  addMoreUsers = () => {
+    this.setState({
+      memberSelect: [...this.state.memberSelect,
+        <div className=" d-flex flex-row bd-highlight mb-3 fields ">
+          <Select
+            className="names"
+            options={this.state.users}
+            onChange={(opt) => this.handleSelect(opt)}
+          />
+        </div>,
+      ],
+    });
+  }
 
   componentDidMount = async () => {
     const email = localStorage.getItem('EmailId');
@@ -107,6 +122,9 @@ class creategroup extends Component {
           GroupId: groupCreateRes.data.Groupdetails.GroupId,
           UserIds: selUsers,
         });
+        if (addusergrp.status === 200) {
+          window.location.href = '/dashboard';
+        }
       }
     } catch (err) {
       alert(err);
@@ -115,11 +133,23 @@ class creategroup extends Component {
 
   render() {
     // console.log(this.state.selected);
+    let EmailId = localStorage.getItem('EmailId');
+    let redirectVar = null;
+    let currentURL = '';
+    if (EmailId === false || EmailId === undefined || EmailId === null) {
+      redirectVar = <Redirect to="/login" />;
+    } else {
+      EmailId = EmailId.charAt(0).toUpperCase() + EmailId.slice(1);
+      const urlstring = EmailId.replace('@', '%40');
+      currentURL = `https://splitwisebucket.s3.us-east-2.amazonaws.com/${urlstring}`;
+      console.log('Current User url', currentURL);
+    }
     return (
       <div>
+        {redirectVar}
         <UpperNavbar />
         <div className="content-block">
-          <img className="envelope" src="https://assets.splitwise.com/assets/core/logo-square-65a6124237868b1d2ce2f5db2ab0b7c777e2348b797626816400534116ae22d7.svg" alt="No img" width="200" height="200" />
+          <img className="envelope" name="grouppic" src="https://assets.splitwise.com/assets/core/logo-square-65a6124237868b1d2ce2f5db2ab0b7c777e2348b797626816400534116ae22d7.svg" alt="No img" width="200" height="200" />
           <h2>Start a new group</h2>
           <form id="new_group" className="form" onSubmit={this.handleSubmit}>
             <div id="group_avatar_upload">
@@ -131,8 +161,14 @@ class creategroup extends Component {
             <input tabIndex="1" placeholder="Home Expenses" name="groupName" autoComplete="off" type="text" id="group_name" />
             <hr />
             <h2>Group Memebers</h2>
+            {/* <div className=" d-flex flex-row bd-highlight mb-3 fields ">
+              <Select
+                className="names"
+                options={this.state.users}
+                onChange={(opt) => this.handleSelect(opt)}
+              />
+    </div> */}
             <div className=" d-flex flex-row bd-highlight mb-3 fields ">
-              <img className="rounded-circle profile-pic" alt="usrprofile" src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-blue23-50px.png" />
               <Select
                 className="names"
                 options={this.state.users}
@@ -140,7 +176,6 @@ class creategroup extends Component {
               />
             </div>
             <div className=" d-flex flex-row bd-highlight mb-3 fields ">
-              <img className="rounded-circle profile-pic" alt="usrprofile" src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-blue23-50px.png" />
               <Select
                 className="names"
                 options={this.state.users}
@@ -148,21 +183,17 @@ class creategroup extends Component {
               />
             </div>
             <div className=" d-flex flex-row bd-highlight mb-3 fields ">
-              <img className="rounded-circle profile-pic" alt="usrprofile" src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-blue23-50px.png" />
               <Select
                 className="names"
                 options={this.state.users}
                 onChange={(opt) => this.handleSelect(opt)}
               />
             </div>
-            <div className=" d-flex flex-row bd-highlight mb-3 fields ">
-              <img className="rounded-circle profile-pic" alt="usrprofile" src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-blue23-50px.png" />
-              <Select
-                className="names"
-                options={this.state.users}
-                onChange={(opt) => this.handleSelect(opt)}
-              />
-            </div>
+            {this.state.memberSelect}
+            <Button type="submit" className="btn-outline-info" onClick={this.addMoreUsers}> + Add more users </Button>
+            <br />
+            <br />
+            <br />
             <Button type="submit" value="Submit" style={{ backgroundColor: '#ff652f' }} className="btn btn-secondary btn-lg">SAVE</Button>
           </form>
         </div>

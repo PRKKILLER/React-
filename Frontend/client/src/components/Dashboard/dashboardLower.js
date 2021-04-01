@@ -58,7 +58,7 @@ class Footer extends Component {
             <ul>
               {this.props.owes.map((user) => (
                 <li className="relationship">
-                  <img src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-orange37-100px.png" className="rounded-circle profilepic" alt="Avatar" />
+                  <img src="https://splitwisebucket.s3.us-east-2.amazonaws.com/User1%40gmail.com" className="rounded-circle profilepic" alt="Avatar" />
                   <span>
                     {' '}
                     { user.UserId2 }
@@ -80,7 +80,7 @@ class Footer extends Component {
             <ul>
               {this.props.owed.map((user) => (
                 <li className="relationship">
-                  <img src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-orange37-100px.png" className="rounded-circle profilepic" alt="Avatar" />
+                  <img src="https://splitwisebucket.s3.us-east-2.amazonaws.com/User1%40gmail.com" className="rounded-circle profilepic" alt="Avatar" />
                   <span>
                     {' '}
                     { user.UserId1 }

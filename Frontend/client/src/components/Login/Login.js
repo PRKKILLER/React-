@@ -1,20 +1,13 @@
-/* eslint-disable linebreak-style */
+/* eslint-disable react/destructuring-assignment *//* eslint-disable linebreak-style */
+/* eslint-disable no-alert */
 /* eslint-disable react/prop-types */
-/* eslint-disable linebreak-style */
 /* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/no-unused-state */
 /* eslint-disable camelcase */
-/* eslint-disable no-irregular-whitespace */
 /* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-/* eslint-disable linebreak-style */
-/* eslint-disable max-len */
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
 import '../../App.css';
-import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import '../../styles/login.css';
 import { connect } from 'react-redux';
@@ -29,6 +22,7 @@ class Login extends Component {
     this.state = {
       username: '',
       password: '',
+      // eslint-disable-next-line react/no-unused-state
       authFlag: false,
     };
     // Bind the handlers to this class
@@ -40,6 +34,7 @@ class Login extends Component {
   // Call the Will Mount to set the auth Flag to false
   UNSAFE_componentWillMount() {
     this.setState({
+      // eslint-disable-next-line react/no-unused-state
       authFlag: false,
     });
   }
@@ -60,13 +55,18 @@ class Login extends Component {
 
     // submit Login handler to send a request to the node backend
     submitLogin = (e) => {
-      const headers = new Headers();
       // prevent page from refresh
       e.preventDefault();
-
+      const EmailId = this.state.username;
+      const Password = this.state.password;
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (re.test(String(EmailId).toLowerCase())) {
       // make a post request with the user data
-      const data = { EmailId: this.state.username, Password: this.state.password };
-      this.props.loginUser(data);
+        const data = { EmailId, Password };
+        this.props.loginUser(data);
+      } else {
+        alert('Enter valid Email Id');
+      }
     }
 
     render() {

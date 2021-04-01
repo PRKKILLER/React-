@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
@@ -65,10 +66,18 @@ class signup extends Component {
     submitLogin = (e) => {
       // prevent page from refresh
       e.preventDefault();
-
+      const EmailId = this.state.emailId;
+      const Password = this.state.password;
+      const Name = this.state.username;
       // eslint-disable-next-line max-len
-      const data = { EmailId: this.state.emailId, Password: this.state.password, Name: this.state.username };
-      this.props.createUser(data);
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (re.test(String(EmailId).toLowerCase())) {
+        // make a post request with the user data
+        const data = { EmailId, Password, Name };
+        this.props.createUser(data);
+      } else {
+        alert('Enter valid Email Id');
+      }
     }
 
     render() {

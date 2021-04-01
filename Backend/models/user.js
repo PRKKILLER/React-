@@ -2,6 +2,7 @@
 // import the require dependencies
 
 const { Sequelize, DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
 
 const sequelize = new Sequelize('splitwise', 'root', 'root_123', {
   host: 'splitwise-db.cxahoocsb1cn.us-east-2.rds.amazonaws.com',
@@ -25,7 +26,7 @@ async function f() {
   }
 }
 f();
-
+const salt = 10;
 const User = sequelize.define('User', {
   // Model attributes are defined here
   EmailId: {
@@ -64,6 +65,13 @@ const User = sequelize.define('User', {
   },
 
 }, {
+  hooks: {
+    // eslint-disable-next-line no-shadow
+    beforeCreate: (User) => {
+      // eslint-disable-next-line no-param-reassign
+      User.Password = User.Password !== '' ? bcrypt.hashSync(User.Password, salt) : '';
+    },
+  },
   // Other model options go here
 });
 

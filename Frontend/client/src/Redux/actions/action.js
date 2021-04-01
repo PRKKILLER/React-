@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-console */
@@ -26,13 +27,19 @@ const loginUser = (payload) => (dispatch) => {
     .then((response) => {
       console.log('Status Code : ', response);
       if (response.status === 200) {
-        console.log(response);
+        console.log('Response data', response);
         dispatch(loginDispatcher(response.data));
+      } else if (response.status === 400) {
+        console.log('hiii');
+        alert('Wrong Password');
       }
     })
     .catch((err) => {
       if (err.response.data) {
-        console.log(err.response.data);
+        alert('Wrong Email Or Password');
+      } else if (err.response.data.errors.body === 'Unauth User') {
+        alert('Wrong Email Or Password');
+        console.log(err.response.data.errors);
         dispatch(unauthDispatcher(err.response.data));
       } else {
         dispatch(unauthDispatcher('Server error'));
@@ -40,20 +47,21 @@ const loginUser = (payload) => (dispatch) => {
     });
 };
 
-const createUser = (payload) => (dispatch) => {
+const createUser = (payload) => async (dispatch) => {
   console.log(payload);
-  axios.post('http://localhost:3002/profile/signup', payload)
-    .then((response) => {
-      console.log('Status Code : ', response);
-      if (response.status === 200) {
-        console.log(response);
-        dispatch(createUserDispatcher(response.data));
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-      dispatch(unauthDispatcher('Server error'));
-    });
+  try {
+    const response = await axios.post('http://localhost:3002/profile/signup', payload);
+    console.log('Status Code : ', response);
+    if (response.status === 200) {
+      console.log(response);
+      dispatch(createUserDispatcher(response.data));
+    } else if (response.status === 202) {
+      alert(response.data.error);
+    }
+  } catch (err) {
+    console.log(err);
+    dispatch(unauthDispatcher('Server error'));
+  }
 };
 
 export {

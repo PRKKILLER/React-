@@ -10,7 +10,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case Types.login: {
-      console.log('login', action.payload.user);
+      console.log('login', action.payload);
       localStorage.setItem('EmailId', action.payload.user.EmailId);
       return {
         authenticated: true, // after update user formsubmition reset
@@ -18,8 +18,8 @@ const reducer = (state = initialState, action) => {
       };
     }
     case Types.signup: {
-      console.log('InsideSignup', action.payload.user);
-      localStorage.setItem('EmailId', action.payload.user.EmailId);
+      console.log('InsideSignup', action.payload);
+      localStorage.setItem('EmailId', action.payload.create.EmailId);
       return {
         authenticated: true, // after update user formsubmition reset
       };

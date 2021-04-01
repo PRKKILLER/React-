@@ -16,12 +16,14 @@ import UpperNavbar from '../Commonpage/upperNavbar';
 import TablePage from './grouppagetable';
 import '../../styles/grouppage.css';
 import Example from './grouppagemodal';
+import Usersummary from './grouptableusersummary';
 
 class GroupPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       expenses: [],
+      usersummary: [],
     };
   }
 
@@ -32,6 +34,9 @@ class GroupPage extends Component {
     const resForExpenseList = await axios.get(`http://localhost:3002/individualgroup/showexpanse/${groupId}`);
     console.log('Expanse', resForExpenseList.data);
     this.setState({ expenses: resForExpenseList.data.data });
+    const resForUserSummary = await axios.get(`http://localhost:3002/individualgroup/Groupsummary/${groupId}`);
+    console.log('summary', resForUserSummary.data);
+    this.setState({ usersummary: resForUserSummary.data.body });
   }
 
   render() {
@@ -42,6 +47,7 @@ class GroupPage extends Component {
         <SideNavbar />
         <Example GroupId={this.props.location.state.group}/>
         <TablePage data={this.state.expenses}/>
+        <Usersummary data={this.state.usersummary}/>
       </div>
     );
   }

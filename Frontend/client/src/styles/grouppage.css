@@ -9,6 +9,12 @@
     top: 210px;
     left: 370px;
 }
+.UserSummaryTable{
+    right: 20px;
+    top: 250px;
+    width: 330px;
+    position: absolute;
+}
 .rrow{
     left: 8px;
     top: 20px;

@@ -21,7 +21,7 @@ const addUserDeusPool = async ({
   const { GroupId } = Group.body.dataValues;
   const Userlist = await getGroupUsersWithoutCurrent(GroupId, EmailId);
   const UserId2 = EmailId;
-  const Owes = (Number(Amount)) / ((Number(Userlist.body.length)));
+  const Owes = (Number(Amount)) / (Number(Number(Userlist.body.length) + 1));
   //   console.log(Owes);
   const addUserDeusRes = [];
   for (let i = 0; i < Userlist.body.length; i += 1) {

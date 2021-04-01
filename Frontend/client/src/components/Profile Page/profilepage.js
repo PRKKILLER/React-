@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
 /* eslint-disable camelcase */
@@ -31,12 +32,28 @@ class profilepage extends Component {
       const Name = e.target.name.value;
       const EmailId = e.target.email.value;
       const PhoneNumber = e.target.phone_number.value;
+      const photo_URL = e.target.photo_URL.files[0];
       // eslint-disable-next-line no-unused-vars
-      const res = await axios.post('http://localhost:3002/profile/updateUserDetails', {
-        EmailId, Name, PhoneNumber, Currency,
-      });
-      console.log(res.data);
-      alert('Profile updated successfully!');
+
+      if (photo_URL !== '') {
+        const reader = new FileReader();
+        reader.readAsDataURL(photo_URL);
+        const bodyParameters = new FormData();
+        bodyParameters.append('file', photo_URL);
+        bodyParameters.append('EmailId', EmailId);
+        for (const key of bodyParameters.entries()) {
+          console.log(`${key[0]}, ${key[1]}`);
+        }
+
+        const resPhotoUrl = await axios.post('http://localhost:3002/profile/addProfilePicture', bodyParameters);
+        const res = await axios.post('http://localhost:3002/profile/updateUserDetails', {
+          EmailId, Name, PhoneNumber, Currency,
+        });
+        console.log('3 url response', resPhotoUrl);
+        if (res.status === 200 && resPhotoUrl.status === 200) {
+          alert('Profile updated successfully!');
+        }
+      }
     } catch (err) {
       console.log(err);
       alert('Could not update profile!');

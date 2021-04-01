@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-alert */
+/* eslint-disable no-undef */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable no-console */
@@ -27,26 +30,34 @@ class mygroups extends Component {
       redirect: false,
       selected: '',
       selectedName: '',
+      isgrouplistnull: true,
     };
   }
 
   componentDidMount = async () => {
     const retrievedObject = localStorage.getItem('EmailId');
     const groupListRes = await axios.get(`http://localhost:3002/mygroup/myGroupList/${retrievedObject}`);
-    console.log(groupListRes.data.data);
-    // const tableData = getDataForMyGroups(groupListRes.data.data);
-    // console.log('data', tableData);
-    this.setState({ groupList: groupListRes.data.data });
-    const options = [];
-    const groupList = groupListRes.data.data;
-    groupList.forEach((group) => {
-      options.push({
-        label: group.GroupName,
-        value: group.GroupId,
+    console.log('Group  list', groupListRes);
+    const alert = null;
+    if (groupListRes.data.data === 'Not In Any Group') {
+      console.log('Render empty page');
+    } else {
+      console.log('inside else');
+      this.state.isgrouplistnull = false;
+      // const tableData = getDataForMyGroups(groupListRes.data.data);
+      // console.log('data', tableData);
+      this.setState({ groupList: groupListRes.data.data });
+      const options = [];
+      const groupList = groupListRes.data.data;
+      groupList.forEach((group) => {
+        options.push({
+          label: group.GroupName,
+          value: group.GroupId,
+        });
       });
-    });
-    console.log(options);
-    this.setState({ options });
+      console.log(options);
+      this.setState({ options });
+    }
   }
 
   handleChange = (option) => {
@@ -69,10 +80,25 @@ class mygroups extends Component {
         />
       );
     }
+    let EmailId = localStorage.getItem('EmailId');
+    let redirectVar = null;
+    let currentURL = '';
+    if (EmailId === false || EmailId === undefined || EmailId === null) {
+      redirectVar = <Redirect to="/login" />;
+    } else {
+      EmailId = EmailId.charAt(0).toUpperCase() + EmailId.slice(1);
+      const urlstring = EmailId.replace('@', '%40');
+      currentURL = `https://splitwisebucket.s3.us-east-2.amazonaws.com/${urlstring}`;
+      console.log('Current User url', currentURL);
+    }
     return (
       <div>
+        {redirectVar}
         <UpperNavbar />
-        <div className="GotoGroup"><button type="button" className="btn btn-outline-secondary" onClick={this.handleClick}>Go to group</button></div>
+        <div className="GotoGroup">
+          {alert}
+          <button type="button" className="btn btn-outline-secondary" onClick={this.handleClick}>Go to group</button>
+        </div>
         <Select
           className="sort"
           options={this.state.options}

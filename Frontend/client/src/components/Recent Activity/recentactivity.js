@@ -7,6 +7,7 @@
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 import '../../App.css';
 import UpperNavbar from '../Commonpage/upperNavbar';
 import '../../styles/recentactivity.css';
@@ -64,9 +65,21 @@ class Recentactivity extends Component {
   }
 
   render() {
+    let EmailId = localStorage.getItem('EmailId');
+    let redirectVar = null;
+    let currentURL = '';
+    if (EmailId === false || EmailId === undefined || EmailId === null) {
+      redirectVar = <Redirect to="/login" />;
+    } else {
+      EmailId = EmailId.charAt(0).toUpperCase() + EmailId.slice(1);
+      const urlstring = EmailId.replace('@', '%40');
+      currentURL = `https://splitwisebucket.s3.us-east-2.amazonaws.com/${urlstring}`;
+      console.log('Current User url', currentURL);
+    }
     console.log('state', this.state.activities);
     return (
       <div>
+        {redirectVar}
         <UpperNavbar />
         <SideNavbar />
         <Jumbotron className="justify-content-md-center Title">

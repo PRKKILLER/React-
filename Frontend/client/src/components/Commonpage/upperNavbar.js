@@ -37,13 +37,23 @@ class UpperNavbar extends Component {
   }
 
   render() {
+    let EmailId = localStorage.getItem('EmailId');
+    let redirectVar = null;
+    let currentURL = '';
+    if (EmailId === false || EmailId === undefined || EmailId === null) {
+      redirectVar = <Redirect to="/login" />;
+    } else {
+      EmailId = EmailId.charAt(0).toUpperCase() + EmailId.slice(1);
+      const urlstring = EmailId.replace('@', '%40');
+      currentURL = `https://splitwisebucket.s3.us-east-2.amazonaws.com/${urlstring}`;
+    }
     return (
       <Container className="upperNavbar">
         <div>
           {' '}
           <img id="logo" className="rounded-cirlce" src="https://assets.splitwise.com/assets/core/logo-wordmark-horizontal-white-short-c309b91b96261a8a993563bdadcf22a89f00ebb260f4f04fd814c2249a6e05d4.svg" />
 
-          <img id="profilepic" src="https://s3.amazonaws.com/splitwise/uploads/user/default_avatars/avatar-blue23-50px.png" />
+          <img id="profilepic" src={currentURL} />
           <a
             href="/dashboard"
             id="dashboardlink"
@@ -64,14 +74,14 @@ class UpperNavbar extends Component {
           </a>
           <Dropdown>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
-              User Name
+              {EmailId}
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
               <Dropdown.Item href="/profilepage">Your Profile</Dropdown.Item>
               <Dropdown.Item href="/creategroup">Create Grp</Dropdown.Item>
               <Dropdown.Item
-                href="/landing"
+                href="/login"
                 onClick={() => {
                   this.props.logoutDispatcher();
                 }}

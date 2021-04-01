@@ -14,21 +14,23 @@
     position: relative;
     top: 5px;
 }
-
+.dropdown-menu{
+    width:230px;
+}
 #dropdown-basic{
     float: right;
     position: relative;
     background-color: #5bc5a7;
     top: -40px;
-    right: -6px;
+    right: 20px;
     height: 36px;
-    width: 160px;
+    width: 230px;
 }
 #profilepic{
 
     float: right;
     border-radius: 50% !important;
-    right: 160px;
+    right: 260px;
     position: relative;
     top:12px;
     height:35px;

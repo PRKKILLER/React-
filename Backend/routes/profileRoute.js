@@ -10,6 +10,7 @@ const Users = require('../models/user');
 const { Op } = require('sequelize');
 const multer = require('multer');
 const { s3, getParams } = require('../services/s3uploader');
+const bcrypt = require('bcrypt');
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -24,12 +25,44 @@ router.post('/login', async (req, res) => {
   const Password = await req.body.Password;
   console.log(EmailId, Password);
   try {
-    const user = await Users.findOne({ where: { [Op.and]: [{ EmailId }, { Password }] } });
-    if (user !== undefined) {
-      res.status(200).send({ user });
+    const user = await Users.findOne({ where: { EmailId } });
+    console.log(' login response ', user);
+    if (user === undefined || user === null) {
+      res.send(500).send({ body: 'No User Found' });
     }
+    bcrypt.compare(Password, user.Password, (
+      err,
+      isMatch,
+    ) => {
+      // console.log(bcrypt.hashSync(password, 10));
+      // console.log(userDetails.password);
+      if (err) {
+        console.log('err', err);
+        res.status(500).send({
+          errors: {
+            body: err,
+          },
+        });
+      } else if (!isMatch) {
+        res.status(400).send({
+          errors: {
+            body: 'Unauth User',
+          },
+        });
+      } else {
+        console.log('Successful log in');
+        delete user.dataValues.Password;
+        console.log('user onject', user.EmailId);
+        res.status(200).send({
+          user,
+        });
+      }
+    });
   } catch (err) {
-    console.log(err);
+    console.log('error', err);
+    res.status(500).send({
+      body: err,
+    });
   }
 });
 
@@ -47,14 +80,29 @@ router.post('/signup', async (req, res) => {
   // // const EmailId = 'kasle36pratik@gmail.com';
   // // const Password = '123';
   console.log(EmailId, Password, Name);
-  res.send({ EmailId, Password, Name });
   try {
     const create = await Users.create({ Name, EmailId, Password });
-    res.status(200).send({
-      create,
-    });
+    console.log('response on duplicate', create);
+    if (create) {
+      res.status(200).send({
+        create,
+      });
+    } else {
+      res.status(400).send({
+        error: 'User Already Exist',
+      });
+    }
   } catch (err) {
-    console.log(err);
+    console.log('Error console 96', err.errors[0].message);
+    if (err.errors[0].message === 'Users.EmailId must be unique') {
+      res.status(202).send({
+        error: 'User Already Exist',
+      });
+    } else {
+      res.status(500).send({
+        err,
+      });
+    }
   }
 });
 

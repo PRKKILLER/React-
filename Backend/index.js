@@ -32,7 +32,7 @@ app.use('/individualgroup', require('./routes/individualGroupRoute'));
 app.use('/dashboard', require('./routes/dashboardRoute'));
 
 // start your server on port 3000
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3003;
 app.listen(port, () => console.log(`listening on port ${port}`));
 // //Route to handle Post Request Call
 // app.post('/login',function(req,res){
